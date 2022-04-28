@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-const Home: NextPage = () => {
+const Home: NextPage = ( {allArticles} ) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -18,8 +18,16 @@ const Home: NextPage = () => {
         </h1>
 
         <p className={styles.description}>
-          todo list here
+          todo list here: 
         </p>
+
+        {/* <h2>JSONify- {JSON.stringify(allArticles)} </h2> */}
+
+        <ul>
+            {allArticles.map((article) => (
+                <li>{article.title} - {article.body} </li>
+            ))}           
+        </ul>
 
       </main>
 
@@ -40,3 +48,11 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export async function getStaticProps() {
+    // const allPosts = (await getAllPostsForHome(preview)) || []
+    const allArticles = [{title: "example", body: "bodyexample", key: "title"}]
+    return {
+      props: { allArticles },
+    }
+}
