@@ -35,7 +35,7 @@ async function fetchFromStrapi( urlSlug: string ){
         throw new Error('Failed to fetch from Strapi API with response')
     }
 
-    console.log('Done fetchFromStrapi'+urlSlug, json.data)
+    // console.log('Done fetchFromStrapi'+urlSlug, json.data)
 
     return json.data
 }

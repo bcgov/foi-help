@@ -18,22 +18,24 @@ import { fetchHelpArticleById, fetchHelpArticles, ArticleResponse } from '../../
 // import { CMS_NAME } from '@/lib/constants'
 // import markdownToHtml from '@/lib/markdownToHtml'
 
-export default function Post({ article, preview }: { article: ArticleResponse, preview: any}) {
-  const router = useRouter()
-  if (!router.isFallback && !article) {
-    return <ErrorPage statusCode={404} />
-  }
-  return (
-    // <Layout preview={preview}>
-    <div>
-      {/* <Container> */}
-        {/* <Header /> */}
-        {router.isFallback ? (
-        //   <PostTitle>Loading…</PostTitle>
-            <h1>Loading...</h1>
-        ) : (
-          <>
-            {/* <article>
+import Link from 'next/link'
+import markdownToHtml from '../../lib/markdownToHTML'
+
+export default function Post({ article, preview, content }: { article: ArticleResponse, preview: any, content: any }) {
+    const router = useRouter()
+    if (!router.isFallback && !article) {
+        return <ErrorPage statusCode={404} />
+    }
+    return (
+        // <Layout preview={preview}>
+        <div>
+            {/* <Container> */}
+            {/* <Header /> */}
+            {router.isFallback ? (
+                <h1>Loading...</h1>
+            ) : (
+                <>
+                    {/* <article>
               <Head>
                 <title>
                   {post.title} | Next.js Blog Example with {CMS_NAME}
@@ -50,42 +52,37 @@ export default function Post({ article, preview }: { article: ArticleResponse, p
             </article>
             <SectionSeparator />
             {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
-
-            <article> 
-                <p>Article goes after this </p>
-                <h1>{ article.attributes.Title} </h1>
-                <p> { article.attributes.Body } </p>
-            </article>
-          </>
-        )}
-      {/* </Container> */}
-    {/* </Layout> */}
-    </div>
-  )
+                    <Link href="/help-articles/"><a>Back to Help Articles</a></Link>
+                    <article>
+                        <h1>{article.attributes.Title} </h1>
+                        <div dangerouslySetInnerHTML={{ __html: content }} ></div>
+                    </article>
+                </>
+            )}
+            {/* </Container> */}
+            {/* </Layout> */}
+        </div>
+    )
 }
 
 export async function getStaticProps({ params, preview = null }) {
-//   const data = await getPostAndMorePosts(params.slug, preview)
-//   const content = await markdownToHtml(data?.posts[0]?.content || '')
-    console.log('params', params)
-    // const article = fetchHelpArticleById(params)
+    // console.log('params', params)
     const article = await fetchHelpArticleById(params.slug)
-    // console.log({ params, article })
+    const content = await markdownToHtml(article.attributes.Body)
 
-
-  return {
-    props: {
-      preview,
-      article,
-    },
-  }
+    return {
+        props: {
+            preview,
+            article,
+            content
+        },
+    }
 }
 
 export async function getStaticPaths() {
-//   const allPosts = await getAllPostsWithSlug()
     const allArticles = await fetchHelpArticles()
-  return {
-    paths: allArticles?.map((article) => `/help-article/${article.id}`) || [],
-    fallback: true,
-  }
+    return {
+        paths: allArticles?.map((article) => `/help-article/${article.id}`) || [],
+        fallback: true,
+    }
 }
