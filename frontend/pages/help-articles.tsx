@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { fetchHelpArticles, ArticleResponse } from '../lib/api'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = ( {allArticles } ) => {
@@ -26,7 +27,11 @@ const Home: NextPage = ( {allArticles } ) => {
 
         <ul>
             {allArticles.map((article: ArticleResponse ) => (
-                <li key={article.id}>{article.attributes.Title}</li>
+                <li key={article.id}>
+                    <Link href={"/help-article/" + article.id }>
+                        <a>{article.attributes.Title}</a>
+                    </Link>
+                </li>
             ))}           
         </ul>
 
@@ -52,20 +57,8 @@ export default Home
 
 export async function getStaticProps() {
     // const allPosts = (await getAllPostsForHome(preview)) || []
-    // const allArticles = [{title: "example", body: "bodyexample", key: "title"}]
-    // const allArticles = (await fetchHelpArticles()) || []
-    var allArticles = await fetchHelpArticles()
-
-    // // Map "id" to "key"
-    // allArticles = allArticles.map(article => {
-    //     article.key = article.id
-    //     return article
-    // })
-
-    console.log({allArticles})
-
-    // if (allArticles == null) allArticles = []
-
+    const allArticles = await fetchHelpArticles()
+    // console.log({allArticles})
     return {
       props: { allArticles },
     }

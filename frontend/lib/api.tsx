@@ -22,7 +22,7 @@
 
 async function fetchFromStrapi( urlSlug: string ){
     // TODO make query string an argument input
-    const res = await fetch(`http://localhost:1337/api/${urlSlug}/`, {
+    const res = await fetch(`http://localhost:1337/api/${urlSlug}`, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `bearer ${process.env.STRAPI_READ_TOKEN}`
@@ -35,13 +35,17 @@ async function fetchFromStrapi( urlSlug: string ){
         throw new Error('Failed to fetch from Strapi API with response')
     }
 
-    console.log('Done fetchFromStrapi', json.data)
+    console.log('Done fetchFromStrapi'+urlSlug, json.data)
 
     return json.data
 }
 
-export async function fetchHelpArticles(): Promise<ArticleResponse> {
-    return await fetchFromStrapi('help-articles')
+export async function fetchHelpArticles(): Promise<ArticleResponse[]> {
+    return await fetchFromStrapi('help-articles/')
+}
+
+export async function fetchHelpArticleById(id: number): Promise<ArticleResponse> {
+    return await fetchFromStrapi(`help-articles/${id}`)
 }
 
 
@@ -53,6 +57,7 @@ export interface ArticleResponse {
 export interface Article extends StrapiJSONResponse {
     Title: string;
     Body: string
+    Slug: string,
 }
 
 interface StrapiJSONResponse {

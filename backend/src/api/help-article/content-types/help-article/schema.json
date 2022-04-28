@@ -4,7 +4,8 @@
   "info": {
     "singularName": "help-article",
     "pluralName": "help-articles",
-    "displayName": "Help Article"
+    "displayName": "Help Article",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -18,14 +19,21 @@
       "type": "richtext"
     },
     "Media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "Slug": {
+      "type": "string",
+      "required": true,
+      "maxLength": 30,
+      "regex": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
     }
   }
 }
