@@ -28,7 +28,7 @@ export default function Post({ article, preview, content }: { article: ArticleRe
     }
     return (
         // <Layout preview={preview}>
-        <div>
+        <div className="container">
             {/* <Container> */}
             {/* <Header /> */}
             {router.isFallback ? (
