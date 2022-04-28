@@ -1,0 +1,21 @@
+version: '3'
+services: 
+
+  foi-help-db:
+    image: postgres
+    container_name: aot_foi_requests_db_pg
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=${FOI_DATABASE_USERNAME}
+      - POSTGRES_PASSWORD=${FOI_DATABASE_PASSWORD}
+    networks:
+      services-network:
+        aliases:
+          - db   
+
+volumes:
+  dbdata:
+networks:
+  services-network:    
+    driver: bridge

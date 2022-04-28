@@ -2,11 +2,11 @@ module.exports = ({ env }) => ({
   connection: {
     client: 'postgres',
     connection: {
-      host: env('DATABASE_HOST', 'localhost'),
-      port: env.int('DATABASE_PORT', 5432),
-      database: env('DATABASE_NAME', 'foi-help-backend'),
-      user: env('DATABASE_USERNAME', 'postgres'),
-      password: env('DATABASE_PASSWORD', 'todochangepassword'),
+      host: env('FOI_DATABASE_HOST', 'localhost'),
+      port: env.int('FOI_DATABASE_PORT', 5432),
+      database: env('FOI_DATABASE_NAME', 'foi-help-backend'),
+      user: env('FOI_DATABASE_USERNAME', 'postgres'),
+      password: env('FOI_DATABASE_PASSWORD', 'todochangepassword'),
       ssl: env.bool('DATABASE_SSL', false),
     },
   },
