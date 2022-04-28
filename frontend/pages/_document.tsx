@@ -1,5 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 // import styles from '../styles/Home.module.css'
+import Link from 'next/link'
 
 export default function Document() {
   return (
@@ -17,7 +18,9 @@ export default function Document() {
                 {/* <img class="header-logo" tabindex="-1" alt="B.C. Government Logo" src="/assets/images/gov3_bc_logo.png"> */}
                 <img className="headerLogo" tabindex="-1" alt="B.C. Government Logo" src="/images/gov3_bc_logo.png" />
             </a>
-            <span className="headerTitle" role="banner">FOI Help</span>
+            <span className="headerTitle" role="banner">
+                <Link href='/'><a className="nolink">FOI Help</a></Link>
+            </span>
         </div>
       </header>
 
