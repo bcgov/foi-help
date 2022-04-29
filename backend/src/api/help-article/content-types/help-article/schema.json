@@ -16,7 +16,8 @@
       "type": "string"
     },
     "Body": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "Media": {
       "type": "media",
