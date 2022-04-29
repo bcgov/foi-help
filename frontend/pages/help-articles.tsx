@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { fetchHelpArticles, ArticleResponse } from '../lib/api'
+import { fetchHelpArticles, StrapiResponseBody, Article, } from '../lib/api'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
@@ -27,7 +27,7 @@ const Home: NextPage = ( {allArticles } ) => {
         {/* <h2>JSONify- {JSON.stringify(allArticles)} </h2> */}
 
         <ul>
-            {allArticles.map((article: ArticleResponse ) => (
+            {allArticles.map((article: StrapiResponseBody<Article> ) => (
                 <li key={article.id}>
                     <Link href={"/help-article/" + article.id }>
                         <a>{article.attributes.Title}</a>

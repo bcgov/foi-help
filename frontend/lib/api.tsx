@@ -40,28 +40,81 @@ async function fetchFromStrapi( urlSlug: string ){
     return json.data
 }
 
-export async function fetchHelpArticles(): Promise<ArticleResponse[]> {
+export async function fetchHelpArticles(): Promise<StrapiResponseBody<Article>[]> {
     return await fetchFromStrapi('help-articles/')
 }
 
-export async function fetchHelpArticleById(id: number): Promise<ArticleResponse> {
-    return await fetchFromStrapi(`help-articles/${id}`)
+export async function fetchHelpArticleById(id: number): Promise<StrapiResponseBody<Article>> {
+    return await fetchFromStrapi(`help-articles/${id}?populate=*`)
 }
 
 
-export interface ArticleResponse {
-    id: number;
-    attributes: Article
+
+// export interface ArticleResponse {
+//     id: number;
+//     attributes: Article
+// }
+
+// export interface ArticleResponse extends StrapiResponseBody {}
+
+export interface Media extends StrapiResponseTimestamps  {
+    // data: {
+    //     id: number;
+    //     attributes: {
+    //         name: string;
+    //         alternativeText: string;
+    //         caption: string;
+    //         hash: string;
+    //         ext: string;
+    //         mime: string,
+    //         size: number,
+    //         url: string,
+    //     }
+    // }
+    name: string;
+    alternativeText: string;
+    caption: string;
+    hash: string;
+    ext: string;
+    mime: string,
+    size: number,
+    url: string,
+    // name: string;
+    // alternativeText: string;
+    // caption: string;
+    // // width: number || null;
+    // // height: number || null;
+    // // formats: null,
+    // hash: string;
+    // ext: string;
+    // mime: string,
+    // size: number,
+    // url: string,
+    // previewUrl: null,
+    // provider: local,
+    // provider_metadata: null,
+    // createdAt: 2022-04-28T23:06:39.547Z,
+    // updatedAt: 2022-04-28T23:06:39.547Z
 }
 
-export interface Article extends StrapiJSONResponse {
+
+export interface Article extends StrapiResponseTimestamps {
     Title: string;
     Body: string
     Slug: string,
+    // Media: Media
+    Media: {
+        data: StrapiResponseBody<Media>
+    }
 }
 
-interface StrapiJSONResponse {
+export interface StrapiResponseBody<T> {
+    id: number;
+    attributes: T   
+}
+
+interface StrapiResponseTimestamps {
     createdAt: string;
     updatedAt: string;
-    publishedAt: string;
+    publishedAt?: string;
 }
