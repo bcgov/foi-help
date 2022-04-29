@@ -25,7 +25,6 @@ const Home: NextPage = () => {
           <Link href='/help-articles/'><a>Help Articles</a></Link>
         </p>
 
-        <Search />
 
         {/* <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>

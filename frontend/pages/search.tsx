@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Search from '../components/search'
 import { fetchHelpArticles } from '../lib/api'
 
-const SearchPage: NextPage = ( { allArticles }) => {
+const SearchPage: NextPage = ( { allArticles }: any ) => {
   return (
     <div className={styles.container}>
       <Head>

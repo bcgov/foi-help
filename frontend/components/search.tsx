@@ -5,12 +5,12 @@ import { Article, StrapiResponseBody } from '../lib/api'
 
 export default function Search( {searchData}: {searchData: StrapiResponseBody<Article>[]} ) {
 
-  const searchRef = useRef(null)
+  const searchRef = useRef(null as any)
   const [query, setQuery] = useState('')
   const [active, setActive] = useState(false)
   const [results, setResults] = useState([])
 
-  const searchEndpoint = (query) => `/api/search?q=${query}`
+//   const searchEndpoint = (query) => `/api/search?q=${query}`
 
 //   console.log('Search: Props', { searchData })
 

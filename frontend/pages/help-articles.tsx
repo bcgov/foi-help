@@ -7,7 +7,7 @@ import styles from '../styles/Home.module.css'
 import markdownToHtml from '../lib/markdownToHTML'
 import Search from '../components/search'
 
-const Home: NextPage = ( {allArticles, snippets } ) => {
+const Home: NextPage = ( {allArticles, snippets }: any ) => {
   return (
     // <div className={styles.container}>
     <div className="container">
