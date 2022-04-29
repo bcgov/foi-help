@@ -4,8 +4,9 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import Search from '../components/search'
+import { fetchHelpArticles } from '../lib/api'
 
-const Home: NextPage = () => {
+const SearchPage: NextPage = ( { allArticles }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -16,16 +17,12 @@ const Home: NextPage = () => {
 
       <main className={styles.main + " container"}>
         <h1 className={styles.title}>
-          FOI Help
+          FOI Help Search
         </h1>
 
-        <p className={styles.description}>
-          Get started by viewing{' '}
-          {/* <code className={styles.code}>pages/index.tsx</code> */}
-          <Link href='/help-articles/'><a>Help Articles</a></Link>
-        </p>
+        <hr />
 
-        <Search />
+        <Search searchData={allArticles} />
 
         {/* <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
@@ -62,5 +59,13 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default SearchPage
 
+export async function getStaticProps() {
+    // Sort by ID
+    const allArticles = (await fetchHelpArticles()).sort((a,b) => a.id - b.id)
+
+    return {
+      props: { allArticles },
+    }
+}
