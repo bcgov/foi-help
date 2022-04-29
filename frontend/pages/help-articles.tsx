@@ -4,8 +4,9 @@ import Image from 'next/image'
 import { fetchHelpArticles, StrapiResponseBody, Article, } from '../lib/api'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import markdownToHtml from '../lib/markdownToHTML'
 
-const Home: NextPage = ( {allArticles } ) => {
+const Home: NextPage = ( {allArticles, snippets } ) => {
   return (
     // <div className={styles.container}>
     <div className="container">
@@ -20,9 +21,6 @@ const Home: NextPage = ( {allArticles } ) => {
           Help Articles List
         </h1>
 
-        <p className={styles.description}>
-          todo list here: 
-        </p>
 
         {/* <h2>JSONify- {JSON.stringify(allArticles)} </h2> */}
 
@@ -36,6 +34,22 @@ const Home: NextPage = ( {allArticles } ) => {
             ))}           
         </ul>
 
+        <hr />
+
+        <div className={styles.grid}>
+        {allArticles.map((article: StrapiResponseBody<Article> ) => (
+                // TODO - Break this into it's own component.  HelpCard
+              <Link href={"/help-article/" + article.id }  key={article.id} >
+                <a className={styles.card}>
+                  <h2>#{article.id}: {article.attributes.Title} &rarr;</h2>
+                  {/* <p className={styles.excerpt}> { (article as ArticleWithSnippet).snippet } ... </p> */}
+                  <div className={styles.excerpt} dangerouslySetInnerHTML={{ __html: (article as ArticleWithSnippet).snippet }}></div>
+                </a>
+              </Link>
+            ))}  
+          
+        </div>
+
       </main>
     </div>
   )
@@ -44,12 +58,32 @@ const Home: NextPage = ( {allArticles } ) => {
 export default Home
 
 export async function getStaticProps() {
-    // const allPosts = (await getAllPostsForHome(preview)) || []
-    const allArticles = await fetchHelpArticles()
-    // console.log({allArticles})
+    // Sort by ID
+    const articles = (await fetchHelpArticles()).sort((a,b) => a.id - b.id)
+
+    // Include snippets for excerpts.
+    const allArticles = await Promise.all(articles.map(async article => {
+      // const snippet = await getArticleSnippet(article);
+      const snippet = article.attributes.Body.substring(0, 100);
+      (article as ArticleWithSnippet).snippet = snippet;
+      return article
+    }))
+
+    // console.log(allArticles)
+
     return {
       props: { allArticles },
     }
 }
 
 
+// Rendering as HTML was too distracting, eg bold.
+async function getArticleSnippet(article: StrapiResponseBody<Article>): Promise<string> {
+  const content = await markdownToHtml(article.attributes.Body.substring(0, 100))
+  return content;
+}
+
+
+interface ArticleWithSnippet extends StrapiResponseBody<Article> {
+  snippet: string;
+}
