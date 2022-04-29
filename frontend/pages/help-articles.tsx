@@ -5,6 +5,7 @@ import { fetchHelpArticles, StrapiResponseBody, Article, } from '../lib/api'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import markdownToHtml from '../lib/markdownToHTML'
+import Search from '../components/search'
 
 const Home: NextPage = ( {allArticles, snippets } ) => {
   return (
@@ -16,14 +17,22 @@ const Home: NextPage = ( {allArticles, snippets } ) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main className={styles.main + " container"}>
         <h1 className={styles.title}>
           Help Articles List
         </h1>
 
 
-        {/* <h2>JSONify- {JSON.stringify(allArticles)} </h2> */}
+        <p className={styles.description}>
+          Get started by searching or browsing from help articles below
+        </p>
 
+        <Search searchData={allArticles} />
+
+
+
+        {/* <h2>JSONify- {JSON.stringify(allArticles)} </h2> */}
+{/* 
         <ul>
             {allArticles.map((article: StrapiResponseBody<Article> ) => (
                 <li key={article.id}>
@@ -32,7 +41,7 @@ const Home: NextPage = ( {allArticles, snippets } ) => {
                     </Link>
                 </li>
             ))}           
-        </ul>
+        </ul> */}
 
         <hr />
 

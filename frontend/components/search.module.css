@@ -8,6 +8,7 @@
     font-size: 18px;
     padding: 18px;
     width: 100%;
+    min-width: 300px;
   }
   
   .results {
@@ -19,12 +20,13 @@
     top: 100%;
     left: 0;
     right: 0;
+    background: #FCBA19
   }
   
   .result {
-    background: #0070f3;
+    background: #1A5A96;
     color: #eee;
-    margin: 0 0 9px;
+    margin: 0 0 2px;
     padding: 18px;
   }
   

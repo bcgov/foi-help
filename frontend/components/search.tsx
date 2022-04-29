@@ -31,7 +31,7 @@ export default function Search( {searchData}: {searchData: StrapiResponseBody<Ar
             }
             return false;
         }).map(article => {
-            return {id: article.id, title: article.attributes.Title}
+            return {id: article.id, title: `#${article.id}: ${article.attributes.Title}`}
         })
         // console.log('filtered', { filtered })
         setResults((filtered as any));
