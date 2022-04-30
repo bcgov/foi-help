@@ -19,6 +19,7 @@ import { fetchHelpArticleById, fetchHelpArticles, StrapiResponseBody, Article, f
 // import markdownToHtml from '@/lib/markdownToHtml'
 
 import Link from 'next/link'
+import HelpMedia from '../../components/media'
 import markdownToHtml from '../../lib/markdownToHTML'
 
 export default function Post({ article, preview, content, hasMedia }: { article: StrapiResponseBody<Article>, preview: any, content: any, hasMedia: boolean }) {
@@ -55,10 +56,7 @@ export default function Post({ article, preview, content, hasMedia }: { article:
                     <Link href="/help-articles/"><a className="back-link"> &larr; Back to Help Articles</a></Link>
                     <article>
                         <h1>{article.attributes.Title} </h1>
-                        {/* TODO - Turn Media into own componeent, include placeholder instead of 'no media', and potentially do yt link? */}
-                        {hasMedia 
-                            ? <p>Has media: <code>{JSON.stringify( article.attributes.Media ) }</code> </p>
-                            : <p><code>No media</code></p>}
+                        <HelpMedia mediaData={article.attributes.Media.data?.attributes} />
                         <div dangerouslySetInnerHTML={{ __html: content }} ></div>
                     </article>
                 </>
