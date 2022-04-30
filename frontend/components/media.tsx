@@ -6,11 +6,10 @@ export default function HelpMedia({ mediaData }: Media) {
     console.log('helpMedia', { mediaData, conditional: !mediaData })
 
     // TODO ONLY TEMPORARY FOR DEMO
+    // STRAPI NOT VIABLE FOR HOSTING ON OPENSHIFT
     function generateStrapiVideoLink(data){
-        return 'http://localhost:1337' + data.url;
+        return process.env.STRAPI_API_URL + data.url;
     }
-    //   const hasMedia = mediaData.
-
 
     if (!mediaData) {
         return (
