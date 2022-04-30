@@ -49,7 +49,7 @@ export async function fetchHelpArticleById(id: number): Promise<StrapiResponseBo
 }
 
 export async function fetchHelpArticleBySlug(slug: string): Promise<StrapiResponseBody<Article>> {
-    return (await fetchFromStrapi(`help-articles?filters[Slug][$eq]=hello-world&populate=*`))[0]
+    return (await fetchFromStrapi(`help-articles?filters[Slug][$eq]=${slug}&populate=*`))[0]
 }
 
 
