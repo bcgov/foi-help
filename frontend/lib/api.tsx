@@ -48,29 +48,12 @@ export async function fetchHelpArticleById(id: number): Promise<StrapiResponseBo
     return await fetchFromStrapi(`help-articles/${id}?populate=*`)
 }
 
+export async function fetchHelpArticleBySlug(slug: string): Promise<StrapiResponseBody<Article>> {
+    return (await fetchFromStrapi(`help-articles?filters[Slug][$eq]=hello-world&populate=*`))[0]
+}
 
-
-// export interface ArticleResponse {
-//     id: number;
-//     attributes: Article
-// }
-
-// export interface ArticleResponse extends StrapiResponseBody {}
 
 export interface Media extends StrapiResponseTimestamps  {
-    // data: {
-    //     id: number;
-    //     attributes: {
-    //         name: string;
-    //         alternativeText: string;
-    //         caption: string;
-    //         hash: string;
-    //         ext: string;
-    //         mime: string,
-    //         size: number,
-    //         url: string,
-    //     }
-    // }
     name: string;
     alternativeText: string;
     caption: string;
@@ -79,22 +62,6 @@ export interface Media extends StrapiResponseTimestamps  {
     mime: string,
     size: number,
     url: string,
-    // name: string;
-    // alternativeText: string;
-    // caption: string;
-    // // width: number || null;
-    // // height: number || null;
-    // // formats: null,
-    // hash: string;
-    // ext: string;
-    // mime: string,
-    // size: number,
-    // url: string,
-    // previewUrl: null,
-    // provider: local,
-    // provider_metadata: null,
-    // createdAt: 2022-04-28T23:06:39.547Z,
-    // updatedAt: 2022-04-28T23:06:39.547Z
 }
 
 
@@ -102,7 +69,6 @@ export interface Article extends StrapiResponseTimestamps {
     Title: string;
     Body: string
     Slug: string,
-    // Media: Media
     Media: {
         data: StrapiResponseBody<Media>
     }

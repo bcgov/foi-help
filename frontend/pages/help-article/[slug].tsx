@@ -14,7 +14,7 @@ import ErrorPage from 'next/error'
 // import { getAllPostsWithSlug, getPostAndMorePosts } from '@/lib/api'
 // import PostTitle from '@/components/post-title'
 import Head from 'next/head'
-import { fetchHelpArticleById, fetchHelpArticles, StrapiResponseBody, Article } from '../../lib/api'
+import { fetchHelpArticleById, fetchHelpArticles, StrapiResponseBody, Article, fetchHelpArticleBySlug } from '../../lib/api'
 // import { CMS_NAME } from '@/lib/constants'
 // import markdownToHtml from '@/lib/markdownToHtml'
 
@@ -70,7 +70,13 @@ export default function Post({ article, preview, content, hasMedia }: { article:
 
 export async function getStaticProps({ params, preview = null }) {
     // console.log('params', params)
-    const article = await fetchHelpArticleById(params.slug)
+    // const article = await fetchHelpArticleById(params.slug)
+    // const article = await fetchHelpArticleById(1)
+    const article = await fetchHelpArticleBySlug(params.slug)
+
+    console.log( {article: JSON.stringify(article), input: params.slug})
+
+    // console.log({ article, attributes: article.attributes, params })
     const content = await markdownToHtml(article.attributes.Body)
     const hasMedia = article.attributes.Media.data
 
@@ -89,7 +95,7 @@ export async function getStaticProps({ params, preview = null }) {
 export async function getStaticPaths() {
     const allArticles = await fetchHelpArticles()
     return {
-        paths: allArticles?.map((article) => `/help-article/${article.id}`) || [],
+        paths: allArticles?.map((article) => `/help-article/${article.attributes.Slug}`) || [],
         fallback: true,
     }
 }

@@ -48,7 +48,7 @@ const Home: NextPage = ( {allArticles, snippets }: any ) => {
         <div className={styles.grid}>
         {allArticles.map((article: StrapiResponseBody<Article> ) => (
                 // TODO - Break this into it's own component.  HelpCard
-              <Link href={"/help-article/" + article.id }  key={article.id} >
+              <Link href={"/help-article/" + article.attributes.Slug }  key={article.id} >
                 <a className={styles.card}>
                   <h2>#{article.id}: {article.attributes.Title} &rarr;</h2>
                   {/* <p className={styles.excerpt}> { (article as ArticleWithSnippet).snippet } ... </p> */}
