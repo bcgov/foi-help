@@ -36,6 +36,7 @@ body {
   border-bottom: 2px solid #fcba19;
   padding-top: 10px;
   padding-bottom: 20px;
+  margin-bottom: 2rem;
 
   /* // Using breakpoint mixin.
   @include media-breakpoint-down(sm) {
@@ -123,4 +124,9 @@ nav {
 
 .pad {
   height: 75px;
+}
+
+.back-link {
+  margin-bottom: 1rem;
+  display: inline-block;
 }

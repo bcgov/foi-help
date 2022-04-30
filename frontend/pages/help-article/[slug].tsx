@@ -52,7 +52,7 @@ export default function Post({ article, preview, content, hasMedia }: { article:
             </article>
             <SectionSeparator />
             {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
-                    <Link href="/help-articles/"><a>Back to Help Articles</a></Link>
+                    <Link href="/help-articles/"><a className="back-link"> &larr; Back to Help Articles</a></Link>
                     <article>
                         <h1>{article.attributes.Title} </h1>
                         {hasMedia 
