@@ -69,17 +69,10 @@ export default function Post({ article, preview, content, hasMedia }: { article:
 }
 
 export async function getStaticProps({ params, preview = null }) {
-    // console.log('params', params)
     // const article = await fetchHelpArticleById(params.slug)
-    // const article = await fetchHelpArticleById(1)
     const article = await fetchHelpArticleBySlug(params.slug)
-
-    console.log( {article: JSON.stringify(article), input: params.slug})
-
-    // console.log({ article, attributes: article.attributes, params })
     const content = await markdownToHtml(article.attributes.Body)
     const hasMedia = article.attributes.Media.data
-
     // console.log({article})
 
     return {
