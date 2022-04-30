@@ -74,7 +74,7 @@ export async function getStaticProps({ params, preview = null }) {
     const content = await markdownToHtml(article.attributes.Body)
     const hasMedia = article.attributes.Media.data
 
-    console.log({article})
+    // console.log({article})
 
     return {
         props: {

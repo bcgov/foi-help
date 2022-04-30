@@ -2,8 +2,22 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Myriad-Pro';
+  /* src: url('/fonts/MyriadWebPro.ttf'); */
+
+
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+}
+
+/* @font-face {
+  font-family: 'Myriad-Pro';
+  src: url('/assets/fonts/MyriadWebPro.ttf');
+} */
+
+@font-face {
+  font-family: 'Myriad-Pro';
+  src: url('/fonts/MyriadWebPro.ttf');
 }
 
 .nolink {
