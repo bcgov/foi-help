@@ -69,13 +69,14 @@
 .grid {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   /* max-width: 800px; */
 }
 
 .card {
-  margin: 1rem;
+  /* margin: 1rem; */
+  margin: 0 2rem 2rem 0rem;
   padding: 1.5rem;
   text-align: left;
   color: inherit;
@@ -83,7 +84,8 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  max-width: 250px;
+  width: 100%;
   min-height: 2rem;
 }
 
