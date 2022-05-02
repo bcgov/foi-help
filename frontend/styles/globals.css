@@ -81,6 +81,13 @@ body {
   margin-right: auto;
 }
 
+@media (max-width: 1240px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
 .footer {
   width: 100%;
   background-color: #036;

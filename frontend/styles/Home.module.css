@@ -69,14 +69,36 @@
 .grid {
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
+  align-items: stretch;
+  justify-content: space-between;
   flex-wrap: wrap;
   /* max-width: 800px; */
 }
 
+@media (max-width: 900px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .card {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 1100px) {
+
+  .card {
+    max-width: 43% !important;
+  }
+}
+
+
 .card {
   /* margin: 1rem; */
-  margin: 0 2rem 2rem 0rem;
+  /* margin: 0 2rem 2rem 0rem; */
+  margin: 0 0 2rem 0rem;
   padding: 1.5rem;
   text-align: left;
   color: inherit;
