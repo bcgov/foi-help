@@ -7,7 +7,7 @@ import styles from '../styles/Home.module.css'
 import markdownToHtml from '../lib/markdownToHTML'
 import Search from '../components/search'
 
-const Home: NextPage = ( {allArticles, snippets }: any ) => {
+const Home: NextPage = ( {allArticles, moreArticles }: any ) => {
   return (
     // <div className={styles.container}>
     <div className="container">
@@ -46,7 +46,7 @@ const Home: NextPage = ( {allArticles, snippets }: any ) => {
         <hr />
 
         <div className={styles.grid}>
-        {allArticles.map((article: StrapiResponseBody<Article> ) => (
+        {moreArticles.map((article: StrapiResponseBody<Article> ) => (
                 // TODO - Break this into it's own component.  HelpCard
               <Link href={"/help-article/" + article.attributes.Slug }  key={article.id} >
                 <a className={styles.card}>
@@ -78,10 +78,13 @@ export async function getStaticProps() {
       return article
     }))
 
+    // Temporary, instead of pagination, just show 12 items.
+    const moreArticles = allArticles.reverse().slice(0, 12);
+
     // console.log(allArticles)
 
     return {
-      props: { allArticles },
+      props: { allArticles, moreArticles },
     }
 }
 
