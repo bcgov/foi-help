@@ -1,0 +1,21 @@
+/* @import "../styles/variables.scss";
+// Bootstrap imports
+@import "~bootstrap/scss/mixins"; */
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+  top: 7px;
+  position: relative;
+  white-space: nowrap;
+
+  /* // Using breakpoint mixin.
+  @include media-breakpoint-down(md){
+    font-size: 25px;
+  }
+  @include media-breakpoint-down(sm){
+    font-size: 18px;
+  } */
+}
+

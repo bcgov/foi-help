@@ -1,0 +1,24 @@
+.media {
+    /* min-height: 340px;
+    min-width: 560px;
+    height: 100%;
+    width: 100%;
+    background-color: grey; */
+}
+
+.player {
+    max-height: 340px;
+    max-width: 340px;
+    /* display: block; */
+    /* float: right; */
+}
+
+.missingMedia {
+    color: green;
+}
+
+@media screen and (min-width: 1080px) {
+    .player {
+        float: right;
+    }
+}

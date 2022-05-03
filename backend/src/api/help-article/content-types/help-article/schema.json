@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "help_articles",
+  "info": {
+    "singularName": "help-article",
+    "pluralName": "help-articles",
+    "displayName": "Help Article",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Body": {
+      "type": "richtext",
+      "required": true
+    },
+    "Media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "Slug": {
+      "type": "string",
+      "required": true,
+      "maxLength": 30,
+      "regex": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "unique": true
+    }
+  }
+}
