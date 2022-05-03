@@ -2,7 +2,7 @@
 # docker-remote.artifacts.developer.gov.bc.ca/ 
 # docker-remote.artifacts.developer.gov.bc.ca/ 
 # FROM docker-remote.artifacts.developer.gov.bc.ca/nodejs:14-ubi8
-# FROM docker-remote.artifacts.developer.gov.bc.ca/strapi/base
+FROM docker-remote.artifacts.developer.gov.bc.ca/strapi/base
 # FROM strapi/base
 
 WORKDIR /my-path
