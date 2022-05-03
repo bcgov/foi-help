@@ -23,13 +23,13 @@ objects:
       to:
         kind: ImageStreamTag
         name: backend:latest
-    # resources:
-    #   limits:
-    #     cpu: 2
-    #     memory: 2Gi
-    #   requests:
-    #     cpu: 2
-    #     memory: 1Gi
+    resources:
+      limits:
+        cpu: 1500m
+        memory: 4Gi
+      requests:
+        cpu: 500m
+        memory: 2Gi
     runPolicy: Serial
     source:
       contextDir: backend
@@ -42,11 +42,11 @@ objects:
         env:
         - name: BUILD_LOGLEVEL
           value: "5"
+        - name: NODE_ENV
+          value: "production"
         from:
           kind: ImageStreamTag
           name: nodejs:14-ubi8
           namespace: openshift
         incremental: false
       type: Source
-    triggers:
-    - type: ConfigChange
