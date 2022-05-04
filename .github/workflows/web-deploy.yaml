@@ -20,7 +20,7 @@ on:
     inputs:
       environment:
         type: choice
-        description: Make a choice
+        description: Target environment to deploy latest changes
         default: "dev"
         required: true
         options:
