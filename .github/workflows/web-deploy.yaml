@@ -1,19 +1,36 @@
 name: Frontend Deploy
 
 
+# on:
+#   push:
+#     branches:
+#       - dev-AC-ocp
+#     paths:
+#       - "frontend/**"
+#       - ".github/workflows/web-deploy.yaml"
+#   workflow_dispatch:
+#     inputs:
+#       environment:
+#         description: "Environment (dev/test/prod)"
+#         required: true
+#         default: "dev"
+
 on:
-  push:
-    branches:
-      - dev-AC-ocp
-    paths:
-      - "frontend/**"
-      - ".github/workflows/web-deploy.yaml"
   workflow_dispatch:
     inputs:
       environment:
-        description: "Environment (dev/test/prod)"
-        required: true
-        default: "dev"
+        type: environment
+        description: Select the environment
+      boolean:
+        type: boolean
+        description: True or False
+      choice:
+        type: choice
+        description: Make a choice
+        options:
+        - dev
+        - test
+        - prod
 
 defaults:
   run:
@@ -38,6 +55,9 @@ jobs:
       - name: greet
         run: | 
           echo "environment is ${{ github.event.inputs.environment }}, TAG_NAME is ${{ env.TAG_NAME}}"
+          echo "boolean is ${{ github.event.inputs.boolean }}"
+          echo "choice is ${{ github.event.inputs.choice }}"
+
 
       - name: Login Openshift
         shell: bash
