@@ -37,7 +37,7 @@ jobs:
 
       - name: greet
         run: | 
-          echo "environment is ${{ github.event.inputs.environment }}, TAG_NAME is ${{TAG_NAME}}"
+          echo "environment is ${{ github.event.inputs.environment }}, TAG_NAME is ${{ env.TAG_NAME}}"
 
       - name: Login Openshift
         shell: bash
