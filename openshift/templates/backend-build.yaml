@@ -1,0 +1,52 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  labels:
+    app: foi-help
+  name: backend-build
+objects:
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: backend
+    labels:
+      app: foi-help
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    name: backend-build
+    labels:
+      app: foi-help
+      name: backend-build
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: backend:latest
+    resources:
+      limits:
+        cpu: 1500m
+        memory: 4Gi
+      requests:
+        cpu: 500m
+        memory: 2Gi
+    runPolicy: Serial
+    source:
+      contextDir: backend
+      git:
+        ref: main
+        uri: https://github.com/bcgov/foi-help.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        env:
+        - name: BUILD_LOGLEVEL
+          value: "5"
+        - name: NODE_ENV
+          value: "production"
+        from:
+          kind: ImageStreamTag
+          name: nodejs:14-ubi8
+          namespace: openshift
+        incremental: false
+      type: Source
