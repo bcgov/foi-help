@@ -19,14 +19,10 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        type: environment
-        description: Select the environment
-      boolean:
-        type: boolean
-        description: True or False
-      choice:
         type: choice
         description: Make a choice
+        default: "dev"
+        required: true
         options:
         - dev
         - test
@@ -45,7 +41,7 @@ jobs:
   frontend-build-cd-by-push:
     runs-on: ubuntu-20.04
 
-    if: github.event_name == 'push' && github.repository == 'bcgov/foi-help'
+    if: github.repository == 'bcgov/foi-help'
     environment:
       name: "dev"
 
@@ -55,9 +51,6 @@ jobs:
       - name: greet
         run: | 
           echo "environment is ${{ github.event.inputs.environment }}, TAG_NAME is ${{ env.TAG_NAME}}"
-          echo "boolean is ${{ github.event.inputs.boolean }}"
-          echo "choice is ${{ github.event.inputs.choice }}"
-
 
       - name: Login Openshift
         shell: bash
