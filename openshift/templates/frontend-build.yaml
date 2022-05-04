@@ -1,0 +1,71 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  labels:
+    app: foi-help
+  name: frontend-build-${OUTPUT_TAG}
+objects:
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: frontend
+    labels:
+      app: foi-help
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    name: frontend-build-${OUTPUT_TAG}
+    labels:
+      app: foi-help
+      name: frontend-build-${OUTPUT_TAG}
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: frontend:${OUTPUT_TAG}
+    resources:
+      limits:
+        cpu: 1500m
+        memory: 4Gi
+      requests:
+        cpu: 500m
+        memory: 2Gi
+    runPolicy: Serial
+    source:
+      contextDir: frontend
+      git:
+        ref: main
+        uri: https://github.com/bcgov/foi-help.git
+      type: Git
+    strategy:
+      sourceStrategy:
+        env:
+        - name: BUILD_LOGLEVEL
+          value: "5"
+        - name: NODE_ENV
+          value: "production"
+        - name: STRAPI_API_URL
+          value: "${STRAPI_API_URL}"
+        - name: STRAPI_READ_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: "strapi-${OUTPUT_TAG}-secrets"
+              key: STRAPI_READ_TOKEN
+        from:
+          kind: ImageStreamTag
+          name: nodejs:14-ubi8
+          namespace: openshift
+        incremental: false
+      type: Source
+parameters:
+- name: OUTPUT_TAG
+  displayName: Name
+  description: The name assigned to all of the OpenShift resources associated to the
+    server instance.
+  required: true
+  value: dev
+- name: STRAPI_API_URL
+  displayName: Strapi API URL
+  description: The name assigned to all of the deployments in this project.
+  required: true
+  value: https://foi-help-backend-dev.apps.silver.devops.gov.bc.ca
