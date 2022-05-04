@@ -25,7 +25,7 @@ env:
   TAG_NAME: "dev"
 
 jobs:
-  forms-flow-web-cd-by-push:
+  frontend-build-cd-by-push:
     runs-on: ubuntu-20.04
 
     if: github.event_name == 'push' && github.repository == 'bcgov/foi-help'
