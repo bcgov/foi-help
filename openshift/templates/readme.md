@@ -9,7 +9,7 @@ In contrast, NextJS is deployable to prod via CI/CD scripts.  This is so content
 ## Build Strapi
 
 ```bash
-oc process -f backend-build.yaml -o yaml | oc apply -f - 
+oc process -f backend-build.yaml -o yaml | oc -n eeced3-dev apply -f - 
 
 ```
 
@@ -25,11 +25,14 @@ Create env file
 
 # Deploy postgres manually via UI.
 
+# Generate new secret (if required)
+node generate-backend-deploy-envs.js > backend-deploy.dev.env
+
 # Deploy secret
-oc create secret generic backend-secrets --from-env-file=backend-deploy.env
+oc -n eeced3-dev create secret generic backend-secrets --from-env-file=backend-deploy.dev.env
 
 # Deploy backend
-oc process -f backend-deploy.yaml -o yaml | oc apply -f -
+oc process -f backend-deploy.yaml -o yaml | oc  -n eeced3-dev apply -f -
 ```
 
 ## Strapi Configuration
@@ -57,5 +60,13 @@ NextJS has 3 separate builds, one for each env (dev/test/prod).  Why?  The reaso
 STRAPI_API_URL is the same URL you used to login to step 1 in Strapi configuration.  Make sure not to include the trailing slash.
 
 ```bash
-oc process -f frontend-build.yaml OUTPUT_TAG=dev STRAPI_API_URL=https://foi-help-backend-dev.apps.silver.devops.gov.bc.ca -o yaml | oc  -n eeced3-tools apply -f -
+oc process -f frontend-build.yaml OUTPUT_TAG=dev STRAPI_API_URL=https://foi-help-backend-dev.apps.silver.devops.gov.bc.ca -o yaml | oc -n eeced3-tools apply -f -
+```
+
+## NextJS Deploy
+
+```bash
+
+oc process -f frontend-deploy.yaml -o yaml | oc -n eeced3-dev apply -f -
+
 ```
