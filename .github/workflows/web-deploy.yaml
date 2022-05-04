@@ -1,20 +1,6 @@
 name: Frontend Deploy
 
 
-# on:
-#   push:
-#     branches:
-#       - dev-AC-ocp
-#     paths:
-#       - "frontend/**"
-#       - ".github/workflows/web-deploy.yaml"
-#   workflow_dispatch:
-#     inputs:
-#       environment:
-#         description: "Environment (dev/test/prod)"
-#         required: true
-#         default: "dev"
-
 on:
   workflow_dispatch:
     inputs:
@@ -48,9 +34,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: greet
+      - name: start
         run: | 
-          echo "environment is ${{ github.event.inputs.environment }}, TAG_NAME is ${{ env.TAG_NAME}}"
+          echo "Building and deploying for ${{ github.event.inputs.environment }}"
 
       - name: Login Openshift
         shell: bash
@@ -65,7 +51,7 @@ jobs:
       - name: Start Build Openshift
         shell: bash
         run: |
-          oc start-build ${{ env.APP_NAME }}-${{ env.TAG_NAME}} --wait
+          oc start-build ${{ env.APP_NAME }}-${{ github.event.inputs.environment }} --wait
 
       # - name: Rocket.Chat Notification
       #   uses: RocketChat/Rocket.Chat.GitHub.Action.Notification@master
