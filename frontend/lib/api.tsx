@@ -58,6 +58,10 @@ export async function fetchHelpArticlesByTag(tag: string): Promise<StrapiRespons
     return tagsWithArticles[0].attributes.help_articles.data;
 }
 
+export async function fetchHelpTags(): Promise<StrapiResponseBody<HelpTags>[]> {
+    return await fetchFromStrapi(`help-tags`)
+}
+
 
 
 export interface Media extends StrapiResponseTimestamps  {

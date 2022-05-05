@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { fetchHelpArticleById, fetchHelpArticles, StrapiResponseBody, Article, fetchHelpArticleBySlug, HelpTags, fetchHelpArticlesByTag } from '../../lib/api'
+import { fetchHelpArticleById, fetchHelpArticles, StrapiResponseBody, Article, fetchHelpArticleBySlug, HelpTags, fetchHelpArticlesByTag, fetchHelpTags } from '../../lib/api'
 
 import Link from 'next/link'
 import ArticleTable from '../../components/article-table'
@@ -38,10 +38,9 @@ export async function getStaticProps({ params, preview = null }) {
 }
 
 export async function getStaticPaths() {
-    // const allArticles = await fetchHelpArticles()
+    const tags = await fetchHelpTags();
     return {
-        // paths: allArticles?.map((article) => `/help-article/${article.attributes.Slug}`) || [],
-        paths: ['/help-tags/frequently-asked'],
+        paths: tags?.map(tag => `/help-tags/${tag.attributes.Name}`) || [],
         fallback: true,
     }
 }

@@ -21,7 +21,7 @@ defaults:
 
 env:
   APP_NAME: "frontend-build"
-  TAG_NAME: "dev"
+  TAG_NAME: "${{ github.event.inputs.environment }}"
 
 jobs:
   frontend-build-cd-by-push:
@@ -29,7 +29,7 @@ jobs:
 
     if: github.repository == 'bcgov/foi-help'
     environment:
-      name: "dev"
+      name: "${{ github.event.inputs.environment }}"
 
     steps:
       - uses: actions/checkout@v2
