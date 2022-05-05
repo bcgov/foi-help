@@ -1,12 +1,14 @@
 # FOI Help OpenShift
 
+
 ```mermaid
 sequenceDiagram
-   frontend-dev-build->>backend-dev-deploy: Build-time
-   backend-dev-deploy->>frontend-dev-build: Strapi REST API
-   Note over backend-dev-deploy,frontend-dev-build: OpenShift Tools
-   frontend-dev-build->frontend-dev-deploy: Deploys static assets
-   Note over frontend-dev-deploy: OpenShift Dev
+   Note over backend-build,frontend-dev-build: OpenShift Tools
+   Note over frontend-dev-deploy,backend-dev-deploy: OpenShift Dev
+   frontend-dev-build->>backend-dev-deploy: Build-time queries Strapi Rest API
+   backend-dev-deploy->>frontend-dev-build: Strapi REST API response
+   backend-build->>backend-dev-deploy: Normal s2i build (oc start build)
+   frontend-dev-build->>frontend-dev-deploy: Deploys static assets
 ```
 
 ## backend-build
