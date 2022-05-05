@@ -4,7 +4,7 @@ import { fetchHelpArticleById, fetchHelpArticles, StrapiResponseBody, Article, f
 import Link from 'next/link'
 import ArticleTable from '../../components/article-table'
 
-export default function TagPage({ tag, params, articles }: { tag: StrapiResponseBody<HelpTags> }) {
+export default function TagPage({ tag, params, articles }: any ) {
     const router = useRouter()
     return (
         // <Layout preview={preview}>

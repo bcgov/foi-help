@@ -7,7 +7,7 @@
     /* background-color: greenyellow; */
     display: flex;
     flex-direction: row;
-    padding: 1rem;
+    /* padding: 1rem; */
     padding-left: 0;
     /* padding: 0 1rem; */
     margin-bottom: 1rem;
@@ -15,6 +15,7 @@
 
 .row + .row {
     border-top: 1px dotted #313132;
+    padding-top: 1rem;
 }
 
 .rowBody {
@@ -23,7 +24,12 @@
 
 .icon {
     width: 75px;
-    height: 75px;
-    background-color: black;
-    display: inline-block;
+    height: 75px;  
+    padding: 0.25rem 0.5rem;
+    font-size: 4rem;
+    text-align: center;
+    background-color: #F2F2F2;
+    color: #003366;
+    border-radius: 3px;
+    /* display: inline-block; */
 }

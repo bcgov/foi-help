@@ -3,6 +3,9 @@ import { Article, StrapiResponseBody } from '../lib/api'
 import Link from 'next/link'
 import styles from './article-table.module.css'
 
+import { MdOutlineVideoCameraBack } from "react-icons/md";
+
+
 // export default function ArticleTable({ articles }: {articles: StrapiResponseBody<Article>[]}) {
 export default function ArticleTable({ articles }: {articles: any}) {
 
@@ -29,14 +32,15 @@ function ArticleRow({ article }: {article: StrapiResponseBody<Article>}) {
 
     return (
         <div className={styles.row}>
-            <div className={styles.icon}></div>
+            <div className={styles.icon}>
+                <MdOutlineVideoCameraBack />
+            </div>
             <div className={styles.rowBody}>
                 <Link href={'/help-article/' + article.attributes.Slug}>
                     <a>
                         <h2 className='h2'>{article.attributes.Title}</h2>
                     </a>
                 </Link>
-                
             </div>
         </div>
     )

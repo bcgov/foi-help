@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import styles from './tag.module.css'
 
-export default function HelpTag({ name, embed=false }: {name: string, embed: boolean}) {
+export default function HelpTag({ name }: {name: string }) {
 
     if (!name) {
         return (
@@ -12,15 +12,6 @@ export default function HelpTag({ name, embed=false }: {name: string, embed: boo
             </div>
         )
     }
-
-    if (embed) {
-       return (
-        <span className={styles.tag}>
-            <span className={styles.link}>{ name }</span>
-        </span>
-       )
-    }
-
 
 
     return (

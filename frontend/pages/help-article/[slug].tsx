@@ -65,7 +65,14 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
 
                     <article>
                         <h1>{article.attributes.Title} </h1>
-                        <HelpMedia mediaData={article.attributes.Media.data?.attributes} />
+                        {/* <HelpMedia mediaData={article.attributes.Media.data?.attributes} /> */}
+
+                        {/* {article.attributes.Media.data
+                            ?  <HelpMedia mediaData={article.attributes.Media.data.attributes} />
+                            : 'No media deleteme'} */}
+                        {/* <HelpMedia mediaData={article.attributes.Media.data?.attributes} /> */}
+
+
                         {helpTags.map(tag => {
                            return <HelpTag key={tag.id} name={tag.attributes.Name}></HelpTag> 
                         })}
