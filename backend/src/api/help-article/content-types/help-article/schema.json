@@ -40,6 +40,10 @@
       "relation": "manyToMany",
       "target": "api::help-tag.help-tag",
       "inversedBy": "help_articles"
+    },
+    "YouTube": {
+      "type": "string",
+      "regex": "^.*(youtu\\.be\\/|v\\/|u\\/\\w\\/|embed\\/|watch\\?v=|\\&v=)([^#\\&\\?]*).*"
     }
   }
 }

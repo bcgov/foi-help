@@ -88,7 +88,8 @@ export interface Article extends StrapiResponseTimestamps {
     },
     help_tags?: {
         data: StrapiResponseBody<HelpTags>[]
-    }
+    },
+    YouTube: string;
 }
 
 export interface StrapiResponseBody<T> {

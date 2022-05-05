@@ -20,7 +20,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::help-article.help-article",
-      "inversedBy": "help_tags"
+      "mappedBy": "help_tags"
     }
   }
 }

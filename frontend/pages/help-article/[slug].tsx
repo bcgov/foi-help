@@ -22,6 +22,7 @@ import Link from 'next/link'
 import HelpMedia from '../../components/media'
 import HelpTag from '../../components/tag'
 import markdownToHtml from '../../lib/markdownToHTML'
+import YoutubeEmbed from '../../components/youtube-embed'
 
 export default function Post({ article, preview, content, hasMedia, helpTags }: { article: StrapiResponseBody<Article>, preview: any, content: any, hasMedia: boolean, helpTags: StrapiResponseBody<HelpTags>[] }) {
     const router = useRouter()
@@ -65,14 +66,16 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
 
                     <article>
                         <h1>{article.attributes.Title} </h1>
-                        {/* <HelpMedia mediaData={article.attributes.Media.data?.attributes} /> */}
+                        
+                        <YoutubeEmbed url={article.attributes.YouTube} 
+                            title={article.attributes.Title} />
 
                         {/* {article.attributes.Media.data
                             ?  <HelpMedia mediaData={article.attributes.Media.data.attributes} />
                             : 'No media deleteme'} */}
                         {/* <HelpMedia mediaData={article.attributes.Media.data?.attributes} /> */}
 
-
+                        {/* <p>HelpTags: {JSON.stringify(helpTags)} </p> */}
                         {helpTags.map(tag => {
                            return <HelpTag key={tag.id} name={tag.attributes.Name}></HelpTag> 
                         })}
@@ -99,8 +102,7 @@ export async function getStaticProps({ params, preview = null }) {
     const content = await markdownToHtml(article.attributes.Body)
     const hasMedia = article.attributes.Media.data
     const helpTags = article.attributes.help_tags?.data
-    // console.log({article})
-    // console.log( JSON.stringify(helpTags) )
+    // console.log({article, helptags: article.attributes.help_tags})
 
     return {
         props: {
