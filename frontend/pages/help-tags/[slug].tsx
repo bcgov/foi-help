@@ -15,7 +15,7 @@ export default function TagPage({ tag, params, articles }: any ) {
                 <>
                     <Link href="/help-articles/"><a className="back-link"> &larr; Back to Help Articles</a></Link>
                     <hr />
-                    <h1>Tags: {params.slug}</h1>
+                    <h1>View all help articles with tag: {params.slug}</h1>
                     <ArticleTable articles={articles} />
                 </>
             )}

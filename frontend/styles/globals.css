@@ -136,6 +136,7 @@ nav {
 .back-link {
   margin-bottom: 1rem;
   display: inline-block;
+  color: #1A5A96
 }
 
 .h1 {
@@ -147,4 +148,8 @@ nav {
 .h2 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
+}
+
+.link {
+  color: #1A5A96
 }
