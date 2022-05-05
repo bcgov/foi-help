@@ -1,5 +1,14 @@
 # FOI Help OpenShift
 
+```mermaid
+sequenceDiagram
+   frontend-dev-build->>backend-dev-deploy: Build-time
+   backend-dev-deploy->>frontend-dev-build: Strapi REST API
+   Note over backend-dev-deploy,frontend-dev-build: OpenShift Tools
+   frontend-dev-build->frontend-dev-deploy: Deploys static assets
+   Note over frontend-dev-deploy: OpenShift Dev
+```
+
 ## backend-build
 
 `backend-build.yaml` deploys Strapi.  This is an identical build between all environments.  It is built from `main` branch.  It will never be auto-deployed to prod, as that's rare and not necessary for content management tasks.  Deploying Strapi is only done after custom Strapi development, so we also require manual deployment too in the form of an `oc tag backend:test backend:prod`.
