@@ -1,4 +1,4 @@
-name: Frontend Deploy
+name: Backend Deploy
 
 
 on:
@@ -24,7 +24,7 @@ env:
   TAG_NAME: "dev"
 
 jobs:
-  frontend-build-cd-by-push:
+  backend-build-cd-by-push:
     runs-on: ubuntu-20.04
 
     if: github.repository == 'bcgov/foi-help'
