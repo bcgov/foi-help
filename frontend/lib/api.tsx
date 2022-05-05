@@ -42,9 +42,7 @@ async function fetchFromStrapi( urlSlug: string ){
 }
 
 export async function fetchHelpArticles(): Promise<StrapiResponseBody<Article>[]> {
-    // HACK: This should only do `populate=help-tags`, to avoid including media data which isn't needed on home page
-    // but unfortunately restricting from wildcard populate not working.
-    return await fetchFromStrapi(`help-articles?populate=*`)
+    return await fetchFromStrapi(`help-articles`)
 }
 
 export async function fetchHelpArticleById(id: number): Promise<StrapiResponseBody<Article>> {
@@ -56,12 +54,8 @@ export async function fetchHelpArticleBySlug(slug: string): Promise<StrapiRespon
 }
 
 export async function fetchHelpArticlesByTag(tag: string): Promise<StrapiResponseBody<Article>[]> {
-    // return (await fetchFromStrapi(`help-articles?filters[help_tags][$contains]=${tag}&populate=*`))
-    // return (await fetchFromStrapi(`help-articles?filters[help_tags][$containsi]=frequently-asked&populate=*`))
-    // return (await fetchFromStrapi(`help-articles?filters[help_tags][$eq]=frequently-asked&populate=*`))[0]
-    // return (await fetchFromStrapi(`help-articles?populate=*`))
-    // Get help article by name, then populate all relations
-    return (await fetchFromStrapi(`help-tags?filters[Name][$eq]=${tag}&populate=*`))
+    const tagsWithArticles = await fetchFromStrapi(`help-tags?filters[Name][$eq]=${tag}&populate=*`)
+    return tagsWithArticles[0].attributes.help_articles.data;
 }
 
 
