@@ -53,7 +53,7 @@ jobs:
         run: |
           oc start-build ${{ env.APP_NAME }}-build --wait
 
-      - name: Tools project
+      - name: Tag build
         shell: bash
         run: |
           oc tag ${{ env.APP_NAME }}:latest ${{ env.APP_NAME }}:${{ github.event.inputs.environment }} 
