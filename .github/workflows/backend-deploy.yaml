@@ -20,7 +20,7 @@ defaults:
     working-directory: ./backend
 
 env:
-  APP_NAME: "backend-build"
+  APP_NAME: "backend"
   TAG_NAME: "dev"
 
 jobs:
@@ -51,7 +51,7 @@ jobs:
       - name: Start Build Openshift
         shell: bash
         run: |
-          oc start-build ${{ env.APP_NAME }} --wait
+          oc start-build ${{ env.APP_NAME }}-build --wait
 
       - name: Tools project
         shell: bash
