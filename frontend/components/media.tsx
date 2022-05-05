@@ -14,11 +14,12 @@ export default function HelpMedia({ mediaData }) {
     }
 
     if (!mediaData) {
-        return (
-            <div className={styles.missingMedia}>
-                <code>No media for article</code>
-            </div>
-        )
+        return;
+        // return (
+        //     <div className={styles.missingMedia}>
+        //         <code>No media for article</code>
+        //     </div>
+        // )
     }
 
 

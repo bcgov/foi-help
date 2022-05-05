@@ -1,0 +1,15 @@
+.tag {
+    display: inline-block;
+    background-color: #F2F2F2;
+    padding: 0.5rem 0.75rem;
+    /* margin: 0.5rem; */
+    /* margin-left: 0; */
+}
+
+.link {
+    color: #1A5A96
+}
+
+.tag + .tag {
+    margin-left: 0.5rem;
+}

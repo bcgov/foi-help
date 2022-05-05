@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "help_tags",
+  "info": {
+    "singularName": "help-tag",
+    "pluralName": "help-tags",
+    "displayName": "help-tag"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "help_articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::help-article.help-article",
+      "inversedBy": "help_tags"
+    }
+  }
+}

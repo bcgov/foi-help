@@ -34,6 +34,12 @@
       "maxLength": 30,
       "regex": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
       "unique": true
+    },
+    "help_tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::help-tag.help-tag",
+      "inversedBy": "help_articles"
     }
   }
 }

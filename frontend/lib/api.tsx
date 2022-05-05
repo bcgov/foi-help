@@ -32,7 +32,7 @@ async function fetchFromStrapi( urlSlug: string ){
 
     const json = await res.json()
     if (json.errors || res.status !== 200) {
-        console.error({'json.errors': json.errors, res})
+        console.error({'json.errors': json.errors, res, body: json.data})
         throw new Error('Failed to fetch from Strapi API with response')
     }
 
@@ -42,7 +42,7 @@ async function fetchFromStrapi( urlSlug: string ){
 }
 
 export async function fetchHelpArticles(): Promise<StrapiResponseBody<Article>[]> {
-    return await fetchFromStrapi('help-articles/')
+    return await fetchFromStrapi(`help-articles`)
 }
 
 export async function fetchHelpArticleById(id: number): Promise<StrapiResponseBody<Article>> {
@@ -52,6 +52,12 @@ export async function fetchHelpArticleById(id: number): Promise<StrapiResponseBo
 export async function fetchHelpArticleBySlug(slug: string): Promise<StrapiResponseBody<Article>> {
     return (await fetchFromStrapi(`help-articles?filters[Slug][$eq]=${slug}&populate=*`))[0]
 }
+
+export async function fetchHelpArticlesByTag(tag: string): Promise<StrapiResponseBody<Article>[]> {
+    const tagsWithArticles = await fetchFromStrapi(`help-tags?filters[Name][$eq]=${tag}&populate=*`)
+    return tagsWithArticles[0].attributes.help_articles.data;
+}
+
 
 
 export interface Media extends StrapiResponseTimestamps  {
@@ -65,6 +71,9 @@ export interface Media extends StrapiResponseTimestamps  {
     url: string,
 }
 
+export interface HelpTags extends StrapiResponseTimestamps {
+    Name: string;
+}
 
 export interface Article extends StrapiResponseTimestamps {
     Title: string;
@@ -72,6 +81,9 @@ export interface Article extends StrapiResponseTimestamps {
     Slug: string,
     Media: {
         data: StrapiResponseBody<Media>
+    },
+    help_tags?: {
+        data: StrapiResponseBody<HelpTags>[]
     }
 }
 

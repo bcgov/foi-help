@@ -6,6 +6,8 @@ import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import markdownToHtml from '../lib/markdownToHTML'
 import Search from '../components/search'
+import HelpTag from '../components/tag'
+import ArticleTable from '../components/article-table'
 
 const Home: NextPage = ( {allArticles, moreArticles }: any ) => {
   return (
@@ -44,20 +46,20 @@ const Home: NextPage = ( {allArticles, moreArticles }: any ) => {
         </ul> */}
 
         <hr />
+        <ArticleTable articles={allArticles} />
 
-        <div className={styles.grid}>
+        {/* FIXME: If any work is done on below, break out into own component like ArticleTable */}
+        {/* <div className={styles.grid}>
         {moreArticles.map((article: StrapiResponseBody<Article> ) => (
-                // TODO - Break this into it's own component.  HelpCard
               <Link href={"/help-article/" + article.attributes.Slug }  key={article.id} >
                 <a className={styles.card}>
                   <h2>#{article.id}: {article.attributes.Title} &rarr;</h2>
-                  {/* <p className={styles.excerpt}> { (article as ArticleWithSnippet).snippet } ... </p> */}
                   <div className={styles.excerpt} dangerouslySetInnerHTML={{ __html: (article as ArticleWithSnippet).snippet }}></div>
                 </a>
               </Link>
             ))}  
           
-        </div>
+        </div> */}
 
       </main>
     </div>
