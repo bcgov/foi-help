@@ -55,9 +55,9 @@ const Home: NextPage = ( {allArticles, moreArticles }: any ) => {
                   <div className={styles.excerpt} dangerouslySetInnerHTML={{ __html: (article as ArticleWithSnippet).snippet }}></div>
 
                   {/* FIXME: Add max of 3 tags to display on this view */}
-                  {article.attributes.help_tags?.data.map(tag => {
+                  {/* {article.attributes.help_tags?.data.map(tag => {
                            return <HelpTag key={tag.id} name={tag.attributes.Name} embed={true}></HelpTag> 
-                   })}
+                   })} */}
                 </a>
               </Link>
             ))}  

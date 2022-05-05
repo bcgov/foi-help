@@ -1,0 +1,15 @@
+.table {
+    
+}
+
+.row {
+    background-color: greenyellow;
+    display: flex;
+}
+
+.icon {
+    width: 75px;
+    height: 75px;
+    background-color: black;
+    display: inline-block;
+}
