@@ -2,6 +2,12 @@ name: Backend Deploy
 
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "backend/"
+      - ".github/workflows/backend-deploy.yaml"
   workflow_dispatch:
     inputs:
       environment:

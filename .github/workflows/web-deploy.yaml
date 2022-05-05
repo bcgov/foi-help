@@ -2,6 +2,12 @@ name: Frontend Deploy
 
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "frontend/"
+      - ".github/workflows/web-deploy.yaml"
   workflow_dispatch:
     inputs:
       environment:
