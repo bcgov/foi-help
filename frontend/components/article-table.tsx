@@ -16,11 +16,10 @@ export default function ArticleTable({ articles }: {articles: any}) {
 
     return (
         <div className={styles.table}>
-            Article list here
             { articles.map(article => {
                 return <ArticleRow article={article} key={article.id} />
             })}
-            { JSON.stringify(articles) }
+            {/* { JSON.stringify(articles) } */}
             {/* <Link>
                 <a className={styles.link}>{ name }</a>
             </Link> */}
@@ -31,14 +30,15 @@ export default function ArticleTable({ articles }: {articles: any}) {
 
 function ArticleRow({ article }: {article: StrapiResponseBody<Article>}) {
 
-    console.log('articleRow article', article )
-
-
     return (
         <div className={styles.row}>
             <div className={styles.icon}></div>
-            <div>
-                {article.attributes.Title}
+            <div className={styles.rowBody}>
+                <Link href={'/help-article/' + article.attributes.Slug}>
+                    <a>
+                        {article.attributes.Title}
+                    </a>
+                </Link>
             </div>
         </div>
     )
