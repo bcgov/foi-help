@@ -55,9 +55,16 @@ jobs:
           oc project ${{ secrets.OPENSHIFT4_FRONTEND_REPOSITORY }}-tools
 
       - name: Start Build Openshift
+        if: "${{ github.event.inputs.environment != '' }}"
         shell: bash
         run: |
           oc start-build ${{ env.APP_NAME }}-${{ github.event.inputs.environment }} --wait
+
+      - name: Start Build Openshift
+        if: "${{ github.event.inputs.environment == '' }}"
+        shell: bash
+        run: |
+          oc start-build ${{ env.APP_NAME }}-dev --wait
 
       # - name: Rocket.Chat Notification
       #   uses: RocketChat/Rocket.Chat.GitHub.Action.Notification@master

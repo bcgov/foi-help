@@ -27,7 +27,7 @@ defaults:
 
 env:
   APP_NAME: "backend"
-  TAG_NAME: "dev"
+  TAG_NAME: "${{ github.event.inputs.environment }}"
 
 jobs:
   backend-build-cd-by-push:
@@ -59,10 +59,17 @@ jobs:
         run: |
           oc start-build ${{ env.APP_NAME }}-build --wait
 
-      - name: Tag build
+      - name: Tag build (workflow input)
+        if: "${{ github.event.inputs.environment != '' }}"
         shell: bash
         run: |
           oc tag ${{ env.APP_NAME }}:latest ${{ env.APP_NAME }}:${{ github.event.inputs.environment }} 
+
+      - name: Tag build (dev default)
+        if: "${{ github.event.inputs.environment == '' }}"
+        shell: bash
+        run: |
+          oc tag ${{ env.APP_NAME }}:latest ${{ env.APP_NAME }}:dev
 
       # - name: Rocket.Chat Notification
       #   uses: RocketChat/Rocket.Chat.GitHub.Action.Notification@master
