@@ -15,24 +15,8 @@ export default function TagPage({ tag, params, articles }: { tag: StrapiResponse
                 <>
                     <Link href="/help-articles/"><a className="back-link"> &larr; Back to Help Articles</a></Link>
                     <hr />
-
                     <h1>Tags: {params.slug}</h1>
-{/* 
-                    Tag Page: {JSON.stringify(params)}
-
-                    <hr />
-
-                    Articles: {JSON.stringify(articles)}
-
-                    <hr /> */}
-
                     <ArticleTable articles={articles} />
-
-
-
-
-            
-
                 </>
             )}
         </div>

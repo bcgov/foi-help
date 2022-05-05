@@ -65,6 +65,7 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
 
                     <article>
                         <h1>{article.attributes.Title} </h1>
+                        <HelpMedia mediaData={article.attributes.Media.data?.attributes} />
                         {helpTags.map(tag => {
                            return <HelpTag key={tag.id} name={tag.attributes.Name}></HelpTag> 
                         })}
@@ -75,7 +76,6 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
                             : 'NO TAGS'}   */}
 
 
-                        <HelpMedia mediaData={article.attributes.Media.data?.attributes} />
                         <div dangerouslySetInnerHTML={{ __html: content }} ></div>
                     </article>
                 </>
