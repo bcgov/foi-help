@@ -7,7 +7,7 @@ on:
       - main
     paths:
       - "backend/"
-      - ".github/workflows/backend-deploy.yaml"
+      # - ".github/workflows/backend-deploy.yaml"
   workflow_dispatch:
     inputs:
       environment:
@@ -59,7 +59,7 @@ jobs:
         run: |
           oc start-build ${{ env.APP_NAME }}-build --wait
 
-      - name: Tag build (workflow input)
+      - name: Tag build (manual workflow input)
         if: "${{ github.event.inputs.environment != '' }}"
         shell: bash
         run: |
