@@ -20,9 +20,9 @@ import { fetchHelpArticleById, fetchHelpArticles, StrapiResponseBody, Article, f
 
 import Link from 'next/link'
 import HelpMedia from '../../components/media'
-import HelpTag from '../../components/tag'
 import markdownToHtml from '../../lib/markdownToHTML'
 import YoutubeEmbed from '../../components/youtube-embed'
+import HelpTagsComponent from '../../components/tag'
 
 export default function Post({ article, preview, content, hasMedia, helpTags }: { article: StrapiResponseBody<Article>, preview: any, content: any, hasMedia: boolean, helpTags: StrapiResponseBody<HelpTags>[] }) {
     const router = useRouter()
@@ -61,9 +61,7 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
                     <article>
                         <div className='article-metadata'>
                             <h1>{article.attributes.Title} </h1>
-                            {helpTags.map(tag => {
-                            return <HelpTag key={tag.id} name={tag.attributes.Name}></HelpTag> 
-                            })}
+                            <HelpTagsComponent helpTags={helpTags} />
                         </div>
 
                        
