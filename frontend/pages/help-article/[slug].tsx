@@ -38,23 +38,17 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
                 <h1>Loading...</h1>
             ) : (
                 <>
-                    {/* <article>
-              <Head>
-                <title>
-                  {post.title} | Next.js Blog Example with {CMS_NAME}
-                </title>
-                <meta property="og:image" content={post.ogImage.url} />
-              </Head>
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                author={post.author}
-              />
-              <PostBody content={post.content} />
-            </article>
-            <SectionSeparator />
-            {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
+                    <Head>
+                        <title>
+                        {article.attributes.Title} | FOI Help
+                        </title>
+
+                        {/* Set meta tag if youtube link is present. */}
+                        {article.attributes.YouTube 
+                            ? <meta property="og:video" content={article.attributes.YouTube} />
+                            : <></>
+                        }
+                    </Head>
                     <Link href="/help-articles/"><a className="back-link"> &larr; Back to Help Articles</a></Link>
 
 
@@ -69,24 +63,12 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
                         
                         <YoutubeEmbed url={article.attributes.YouTube} 
                             title={article.attributes.Title} />
-
-                        {/* {article.attributes.Media.data
-                            ?  <HelpMedia mediaData={article.attributes.Media.data.attributes} />
-                            : 'No media deleteme'} */}
-                        {/* <HelpMedia mediaData={article.attributes.Media.data?.attributes} /> */}
-
                         {/* <p>HelpTags: {JSON.stringify(helpTags)} </p> */}
+                        <div dangerouslySetInnerHTML={{ __html: content }} ></div>
                         {helpTags.map(tag => {
                            return <HelpTag key={tag.id} name={tag.attributes.Name}></HelpTag> 
                         })}
 
-{/* 
-                        {helpTags 
-                            ? <HelpTag name="hi"></HelpTag>
-                            : 'NO TAGS'}   */}
-
-
-                        <div dangerouslySetInnerHTML={{ __html: content }} ></div>
                     </article>
                 </>
             )}

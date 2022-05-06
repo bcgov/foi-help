@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { fetchHelpArticleById, fetchHelpArticles, StrapiResponseBody, Article, fetchHelpArticleBySlug, HelpTags, fetchHelpArticlesByTag, fetchHelpTags } from '../../lib/api'
 
+import Head from 'next/head'
 import Link from 'next/link'
 import ArticleTable from '../../components/article-table'
 
@@ -13,6 +14,9 @@ export default function TagPage({ tag, params, articles }: any ) {
                 <h1>Loading...</h1>
             ) : (
                 <>
+                    <Head>
+                        <title>{params.slug} | FOI Help</title>
+                    </Head>
                     <Link href="/help-articles/"><a className="back-link"> &larr; Back to Help Articles</a></Link>
                     <hr />
                     <h1>View all help articles with tag: {params.slug}</h1>
