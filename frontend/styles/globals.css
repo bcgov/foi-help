@@ -168,3 +168,11 @@ nav {
   width: 100%;
   position: absolute;
 }
+
+.article-metadata {
+  margin-bottom: 2rem;
+}
+
+.article-metadata h1 {
+  margin-bottom: 0.75rem;
+}

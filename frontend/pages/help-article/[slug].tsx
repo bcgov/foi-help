@@ -59,15 +59,18 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
             
 
                     <article>
-                        <h1>{article.attributes.Title} </h1>
-                        
+                        <div className='article-metadata'>
+                            <h1>{article.attributes.Title} </h1>
+                            {helpTags.map(tag => {
+                            return <HelpTag key={tag.id} name={tag.attributes.Name}></HelpTag> 
+                            })}
+                        </div>
+
+                       
                         <YoutubeEmbed url={article.attributes.YouTube} 
                             title={article.attributes.Title} />
                         {/* <p>HelpTags: {JSON.stringify(helpTags)} </p> */}
                         <div dangerouslySetInnerHTML={{ __html: content }} ></div>
-                        {helpTags.map(tag => {
-                           return <HelpTag key={tag.id} name={tag.attributes.Name}></HelpTag> 
-                        })}
 
                     </article>
                 </>
