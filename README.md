@@ -42,7 +42,6 @@ Once Strapi is setup, go and create a read only API token.
    2. Name: read-help
    3. Token type: read-only
 3. Make sure to copy the token down!  You will not be able to view it later.  If you lose the token, you must delete and re-do step #2.
-4. TODO TODO - 
 5. Put in `frontend/.env` as `STRAPI_READ_TOKEN`, and also set `STRAPI_READ_TOKEN` as the same base URL you logged into for step #1.
 
 
