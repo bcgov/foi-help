@@ -64,6 +64,11 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
                             <HelpTagsComponent helpTags={helpTags} />
                         </div>
 
+                        {hasMedia 
+                            ? <p>{JSON.stringify(article.attributes.Media)}</p>
+                            : <></>
+                        }
+
                        
                         <YoutubeEmbed url={article.attributes.YouTube} 
                             title={article.attributes.Title} />
@@ -85,7 +90,7 @@ export async function getStaticProps({ params, preview = null }) {
     const content = await markdownToHtml(article.attributes.Body)
     const hasMedia = article.attributes.Media.data
     const helpTags = article.attributes.help_tags?.data
-    // console.log({article, helptags: article.attributes.help_tags})
+    console.log({article, helptags: article.attributes.help_tags})
 
     return {
         props: {
