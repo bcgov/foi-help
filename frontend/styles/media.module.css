@@ -7,9 +7,9 @@
 }
 
 .player {
-    /* max-height: 340px; */
-    /* max-width: 340px; */
-    width: auto;
+    /* width: auto; */
+    /* width-100% to set default size of video player before video loads, stops FOUT-ish jank */
+    width: 100%;
     max-height: 75vh;
     display: block;
     margin: 0 auto;

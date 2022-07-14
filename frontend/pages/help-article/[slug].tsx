@@ -44,6 +44,7 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
                         </title>
 
                         {/* Set meta tag if youtube link is present. */}
+                        {/* TODO - Update with S3 info once integration done. */}
                         {article.attributes.YouTube 
                             ? <meta property="og:video" content={article.attributes.YouTube} />
                             : <></>
@@ -51,12 +52,7 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
                     </Head>
                     <Link href="/help-articles/"><a className="back-link"> &larr; Back to Help Articles</a></Link>
 
-
-                    {/* {JSON.stringify(helpTags)} */}
                     <hr />
-
-
-            
 
                     <article>
                         <div className='article-metadata'>
@@ -64,11 +60,7 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
                             <HelpTagsComponent helpTags={helpTags} />
                         </div>
 
-                        {hasMedia 
-                            ? <p>{JSON.stringify(article.attributes.Media)}</p>
-                            : <></>
-                        }
-
+                        <HelpMedia mediaData={article.attributes.Media.data} />
                        
                         <YoutubeEmbed url={article.attributes.YouTube} 
                             title={article.attributes.Title} />
