@@ -13,11 +13,13 @@
     max-height: 75vh;
     display: block;
     margin: 0 auto;
+    max-width: 100%;
 }
 
 .missingMedia {
     color: green;
 }
+
 
 /* @media screen and (min-width: 1080px) {
     .player {
