@@ -19,12 +19,10 @@ export default function HelpMedia({ mediaData }) {
         )
     }
 
-   if (isMimeType('video')) {
-       return (
-           <div className={styles.media}>
-               <video controls className={styles.player} src={generateStrapiVideoLink(mediaData.attributes)}></video>
-           </div>
-       )
-   } 
+    return (
+        <div className={styles.media}>
+            <video controls className={styles.player} src={generateStrapiVideoLink(mediaData.attributes)}></video>
+        </div>
+    )
 
 }
