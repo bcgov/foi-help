@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Html, Head, Main, NextScript } from 'next/document'
 // import styles from '../styles/Home.module.css'
 import Link from 'next/link'
