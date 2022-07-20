@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { fetchHelpArticleById, fetchHelpArticles, StrapiResponseBody, Article, fetchHelpArticleBySlug, HelpTags, fetchHelpArticlesByTag, fetchHelpTags } from '../../lib/api'
+import { fetchHelpArticlesByTag, fetchHelpTags } from '../../lib/api'
 
 import Head from 'next/head'
 import Link from 'next/link'
