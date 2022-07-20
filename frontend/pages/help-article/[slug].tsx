@@ -20,9 +20,9 @@ import { fetchHelpArticleById, fetchHelpArticles, StrapiResponseBody, Article, f
 
 import Link from 'next/link'
 import HelpMedia from '../../components/media'
-import HelpTag from '../../components/tag'
 import markdownToHtml from '../../lib/markdownToHTML'
 import YoutubeEmbed from '../../components/youtube-embed'
+import HelpTagsComponent from '../../components/tag'
 
 export default function Post({ article, preview, content, hasMedia, helpTags }: { article: StrapiResponseBody<Article>, preview: any, content: any, hasMedia: boolean, helpTags: StrapiResponseBody<HelpTags>[] }) {
     const router = useRouter()
@@ -44,6 +44,7 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
                         </title>
 
                         {/* Set meta tag if youtube link is present. */}
+                        {/* TODO - Update with S3 info once integration done. */}
                         {article.attributes.YouTube 
                             ? <meta property="og:video" content={article.attributes.YouTube} />
                             : <></>
@@ -51,21 +52,15 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
                     </Head>
                     <Link href="/help-articles/"><a className="back-link"> &larr; Back to Help Articles</a></Link>
 
-
-                    {/* {JSON.stringify(helpTags)} */}
                     <hr />
-
-
-            
 
                     <article>
                         <div className='article-metadata'>
                             <h1>{article.attributes.Title} </h1>
-                            {helpTags.map(tag => {
-                            return <HelpTag key={tag.id} name={tag.attributes.Name}></HelpTag> 
-                            })}
+                            <HelpTagsComponent helpTags={helpTags} />
                         </div>
 
+                        <HelpMedia mediaData={article.attributes.Media.data} />
                        
                         <YoutubeEmbed url={article.attributes.YouTube} 
                             title={article.attributes.Title} />
@@ -87,7 +82,7 @@ export async function getStaticProps({ params, preview = null }) {
     const content = await markdownToHtml(article.attributes.Body)
     const hasMedia = article.attributes.Media.data
     const helpTags = article.attributes.help_tags?.data
-    // console.log({article, helptags: article.attributes.help_tags})
+    console.log({article, helptags: article.attributes.help_tags})
 
     return {
         props: {

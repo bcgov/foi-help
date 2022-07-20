@@ -1,13 +1,35 @@
 .tag {
     display: inline-block;
-    background-color: #F2F2F2;
+    /* background-color: #F2F2F2; */
     padding: 0.5rem 0.75rem;
+    /* border-color: #003366; */
+    border: 2px solid #003366;
+    border-radius: 100px;
+    position: relative;
+    transition: 0.3s;
+    text-decoration: underline;
+    color: #003366;
+    margin-top: 0.5rem;
+}
+
+.tag:hover {
+    /* background-color: white; */
+    /* background-color: #003366; */
+    background-color: rgb(240 247 255);
+    transform: translateY(-2px);
 }
 
 .link {
-    color: #1A5A96
+    /* color: #1A5A96 */
+    color: #003366;
 }
 
 .tag + .tag {
     margin-left: 0.5rem;
 }
+
+/* .tag + .tag::before {
+    content: "/";
+    position: absolute;
+    left: 15px;
+} */
