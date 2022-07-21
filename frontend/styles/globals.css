@@ -176,3 +176,18 @@ nav {
 .article-metadata h1 {
   margin-bottom: 0.75rem;
 }
+
+.btn-primary {
+  background-color: #036 !important;
+  --bs-btn-border-color: #fff !important;
+  margin-top: 10px !important;
+}
+
+.btn-primary:hover {
+  /* background-color: #036 !important; */
+  --bs-btn-border-color: #fff !important;
+}
+
+.headerTitle {
+  padding-top: 10px;
+}
