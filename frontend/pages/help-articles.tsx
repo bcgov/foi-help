@@ -8,60 +8,94 @@ import markdownToHtml from '../lib/markdownToHTML'
 import Search from '../components/search'
 import HelpTag from '../components/tag'
 import ArticleTable from '../components/article-table'
+import { signIn, signOut, useSession } from "next-auth/react"
+import Layout from "../components/layout"
+import AccessDenied from "../components/access-denied"
 
 const Home: NextPage = ( {allArticles, moreArticles }: any ) => {
+  const { data: session, status } = useSession()
+  const loading = status === "loading"
+
+  // When rendering client side don't display anything until loading is complete
+  if (loading) return null
+
+  // If no session exists, display access denied message
+  if (!session) {
+    return (
+      <Layout>
+        <AccessDenied />
+      </Layout>
+    )
+  }
+
   return (
     // <div className={styles.container}>
-    <div className="container">
-      <Head>
-        <title>Help Articles | FOI Help</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main + " container"}>
-        <h1 className={styles.title}>
-          Help Articles List
-        </h1>
+    <Layout>
+      <h1 className={styles.title}>
+        Help Articles List
+      </h1>
 
 
-        <p className={styles.description}>
-          Get started by searching or browsing from help articles below
-        </p>
+      <p className={styles.description}>
+        Get started by searching or browsing from help articles below
+      </p>
 
-        <Search searchData={allArticles} />
+      <Search searchData={allArticles} />
+
+      <hr />
+      <ArticleTable articles={allArticles} />
+    </Layout>
+
+//     <div className="container">
+//       <Head>
+//         <title>Help Articles | FOI Help</title>
+//         <link rel="icon" href="/favicon.ico" />
+//       </Head>
+
+//       <main className={styles.main + " container"}>
+//         <h1 className={styles.title}>
+//           Help Articles List
+//         </h1>
+
+
+//         <p className={styles.description}>
+//           Get started by searching or browsing from help articles below
+//         </p>
+
+//         <Search searchData={allArticles} />
 
 
 
-        {/* <h2>JSONify- {JSON.stringify(allArticles)} </h2> */}
-{/* 
-        <ul>
-            {allArticles.map((article: StrapiResponseBody<Article> ) => (
-                <li key={article.id}>
-                    <Link href={"/help-article/" + article.id }>
-                        <a>{article.attributes.Title}</a>
-                    </Link>
-                </li>
-            ))}           
-        </ul> */}
+//         {/* <h2>JSONify- {JSON.stringify(allArticles)} </h2> */}
+// {/* 
+//         <ul>
+//             {allArticles.map((article: StrapiResponseBody<Article> ) => (
+//                 <li key={article.id}>
+//                     <Link href={"/help-article/" + article.id }>
+//                         <a>{article.attributes.Title}</a>
+//                     </Link>
+//                 </li>
+//             ))}           
+//         </ul> */}
 
-        <hr />
-        <ArticleTable articles={allArticles} />
+//         <hr />
+//         <ArticleTable articles={allArticles} />
 
-        {/* FIXME: If any work is done on below, break out into own component like ArticleTable */}
-        {/* <div className={styles.grid}>
-        {moreArticles.map((article: StrapiResponseBody<Article> ) => (
-              <Link href={"/help-article/" + article.attributes.Slug }  key={article.id} >
-                <a className={styles.card}>
-                  <h2>#{article.id}: {article.attributes.Title} &rarr;</h2>
-                  <div className={styles.excerpt} dangerouslySetInnerHTML={{ __html: (article as ArticleWithSnippet).snippet }}></div>
-                </a>
-              </Link>
-            ))}  
+//         {/* FIXME: If any work is done on below, break out into own component like ArticleTable */}
+//         {/* <div className={styles.grid}>
+//         {moreArticles.map((article: StrapiResponseBody<Article> ) => (
+//               <Link href={"/help-article/" + article.attributes.Slug }  key={article.id} >
+//                 <a className={styles.card}>
+//                   <h2>#{article.id}: {article.attributes.Title} &rarr;</h2>
+//                   <div className={styles.excerpt} dangerouslySetInnerHTML={{ __html: (article as ArticleWithSnippet).snippet }}></div>
+//                 </a>
+//               </Link>
+//             ))}  
           
-        </div> */}
+//         </div> */}
 
-      </main>
-    </div>
+//       </main>
+//     </div>
   )
 }
 

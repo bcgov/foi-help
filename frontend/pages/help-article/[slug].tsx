@@ -23,6 +23,7 @@ import HelpMedia from '../../components/media'
 import HelpTag from '../../components/tag'
 import markdownToHtml from '../../lib/markdownToHTML'
 import YoutubeEmbed from '../../components/youtube-embed'
+import Layout from "../../components/layout"
 
 export default function Post({ article, preview, content, hasMedia, helpTags }: { article: StrapiResponseBody<Article>, preview: any, content: any, hasMedia: boolean, helpTags: StrapiResponseBody<HelpTags>[] }) {
     const router = useRouter()
@@ -30,7 +31,8 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
         return <ErrorPage statusCode={404} />
     }
     return (
-        // <Layout preview={preview}>
+        <Layout>
+        {/* // <Layout preview={preview}> */}
         <div className="container">
             {/* <Container> */}
             {/* <Header /> */}
@@ -78,6 +80,7 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
             {/* </Container> */}
             {/* </Layout> */}
         </div>
+        </Layout>
     )
 }
 
