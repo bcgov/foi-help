@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { signIn, signOut, useSession } from "next-auth/react"
 import styles from "./header.module.css"
+import 'bootstrap/dist/css/bootstrap.css'
 
 // The approach used in this component shows how to build a sign in and sign out
 // component that works on pages which support both client and server side
@@ -26,11 +27,11 @@ export default function Header() {
         >
           {!session && (
             <a
-              href={`/api/auth/signin`}
+              href={`/api/auth/signin/keycloak`}
               className={styles.buttonPrimary}
               onClick={(e) => {
                 e.preventDefault()
-                signIn()
+                signIn('keycloak')
               }}
             >
               <button type="button" className="btn btn-primary btn-sign">
