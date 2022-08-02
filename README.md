@@ -2,7 +2,9 @@
 [![Lifecycle:Experimental](https://img.shields.io/badge/Lifecycle-Experimental-339999)](https://github.com/bcgov/repomountie/blob/master/doc/lifecycle-badges.md)
 
 ## foi-help
-Freedom of Information modernization 
+Freedom of Information modernization
+
+Are you a user looking to publish an article?  Check our simple [docs/publishing-an-article.md](docs/publishing-an-article.md) step by step instructions.
 
 ## Features
 
