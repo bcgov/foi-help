@@ -62,7 +62,7 @@ body {
   font-size: 30px;
   font-weight: bold;
   color: #fff;
-  top: -5px;
+  top: 6px;
   position: relative;
   white-space: nowrap;
 
@@ -180,6 +180,7 @@ nav {
 .btn-primary {
   background-color: #036 !important;
   --bs-btn-border-color: #fff !important;
+  --bs-btn-hover-border-color: #fff !important;
   margin-top: 10px !important;
 }
 
