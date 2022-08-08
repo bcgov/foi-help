@@ -3,7 +3,7 @@ services:
 
   foi-help-db:
     image: postgres
-    container_name: aot_foi_requests_db_pg
+    container_name: aot_foi_help_db_pg
     ports:
       - "5432:5432"
     environment:

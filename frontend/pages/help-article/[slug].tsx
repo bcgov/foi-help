@@ -22,15 +22,35 @@ import Link from 'next/link'
 import HelpMedia from '../../components/media'
 import markdownToHtml from '../../lib/markdownToHTML'
 import YoutubeEmbed from '../../components/youtube-embed'
+import { signIn, signOut, useSession } from "next-auth/react"
+import Layout from "../../components/layout"
+import AccessDenied from "../../components/access-denied"
 import HelpTagsComponent from '../../components/tag'
 
 export default function Post({ article, preview, content, hasMedia, helpTags }: { article: StrapiResponseBody<Article>, preview: any, content: any, hasMedia: boolean, helpTags: StrapiResponseBody<HelpTags>[] }) {
+    const { data: session, status } = useSession()
     const router = useRouter()
+    const loading = status === "loading"
+  
+    // When rendering client side don't display anything until loading is complete
+    if (loading) return null
+  
+    // If no session exists, display access denied message
+    if (!session) {
+      return (
+        <Layout>
+          <AccessDenied />
+        </Layout>
+      )
+    }
+
     if (!router.isFallback && !article) {
         return <ErrorPage statusCode={404} />
     }
+
     return (
-        // <Layout preview={preview}>
+        <Layout>
+        {/* // <Layout preview={preview}> */}
         <div className="container">
             {/* <Container> */}
             {/* <Header /> */}
@@ -73,6 +93,7 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
             {/* </Container> */}
             {/* </Layout> */}
         </div>
+        </Layout>
     )
 }
 
