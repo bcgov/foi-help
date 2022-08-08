@@ -29,6 +29,7 @@ import HelpTagsComponent from '../../components/tag'
 
 export default function Post({ article, preview, content, hasMedia, helpTags }: { article: StrapiResponseBody<Article>, preview: any, content: any, hasMedia: boolean, helpTags: StrapiResponseBody<HelpTags>[] }) {
     const { data: session, status } = useSession()
+    const router = useRouter()
     const loading = status === "loading"
   
     // When rendering client side don't display anything until loading is complete
@@ -43,7 +44,6 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
       )
     }
 
-    const router = useRouter()
     if (!router.isFallback && !article) {
         return <ErrorPage statusCode={404} />
     }
