@@ -1,20 +1,24 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { fetchHelpArticles, StrapiResponseBody, Article, } from '../lib/api'
+import { fetchHelpArticles, StrapiResponseBody, Article, fetchHelpPage, } from '../lib/api'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import markdownToHtml from '../lib/markdownToHTML'
 import Search from '../components/search'
-import HelpTag from '../components/tag'
+import { HelpTag } from '../components/tag'
 import ArticleTable from '../components/article-table'
 import { signIn, signOut, useSession } from "next-auth/react"
 import Layout from "../components/layout"
 import AccessDenied from "../components/access-denied"
+import { TagCard } from '../components/tag-card'
+// import HelpTags from '../components/tag'
 
-const Home: NextPage = ( {allArticles, moreArticles }: any ) => {
+const Home: NextPage = ( {allArticles, moreArticles, page }: any ) => {
   const { data: session, status } = useSession()
   const loading = status === "loading"
+
+  // console.log('PAGEDPAGE', page.attributes.intro )
 
   // When rendering client side don't display anything until loading is complete
   if (loading) return null
@@ -37,8 +41,26 @@ const Home: NextPage = ( {allArticles, moreArticles }: any ) => {
 
 
       <p className={styles.description}>
-        Get started by searching or browsing from help articles below
+        { page.attributes.intro || 'Get started by searching or browsing from help articles below'} 
       </p>
+
+      {/* { JSON.stringify(page.attributes.highlighted_help_tags) } */}
+
+      <p>Highlighted Tags:</p>
+      <div className={styles.highlighted_tags}>
+        { page.attributes.highlighted_help_tags.data.map(tag => {
+            return <><HelpTag key={tag.id} name={tag.attributes.Name}></HelpTag></>
+        })}
+      </div>
+
+     <p>Highlighted Tag CARDS</p>
+     <div className={styles.highlighted_tag_cards}>
+        { page.attributes.highlighted_help_tags.data.map(tag => {
+            return <><TagCard key={tag.id} name={tag.attributes.Name} description={tag.attributes.description}></TagCard></>
+        })}
+      </div>
+
+      {/* <HelpTags helpTags={page.attributes.highlighted_help_tags.data} /> */}
 
       <Search searchData={allArticles} />
 
@@ -116,10 +138,13 @@ export async function getStaticProps() {
     // Temporary, instead of pagination, just show 12 items.
     const moreArticles = allArticles.reverse().slice(0, 12);
 
+    const page = await fetchHelpPage()
+    console.log({ page })
     // console.log(allArticles)
+    
 
     return {
-      props: { allArticles, moreArticles },
+      props: { allArticles, moreArticles, page },
     }
 }
 

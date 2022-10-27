@@ -4,7 +4,8 @@
   "info": {
     "singularName": "help-tag",
     "pluralName": "help-tags",
-    "displayName": "help-tag"
+    "displayName": "help-tag",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -21,6 +22,10 @@
       "relation": "manyToMany",
       "target": "api::help-article.help-article",
       "mappedBy": "help_tags"
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 150
     }
   }
 }

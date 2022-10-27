@@ -194,3 +194,14 @@
 .excerpt {
   color: #565656;
 }
+
+.highlighted_tag_cards,
+.highlighted_tags {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.highlighted_tags {
+  font-size: 1.5rem;
+}

@@ -62,6 +62,10 @@ export async function fetchHelpTags(): Promise<StrapiResponseBody<HelpTags>[]> {
     return await fetchFromStrapi(`help-tags`)
 }
 
+export async function fetchHelpPage(): Promise<StrapiResponseBody<HelpPage>> {
+    return await fetchFromStrapi(`help-article-page?populate=*`)
+}
+
 
 
 export interface Media extends StrapiResponseTimestamps  {
@@ -77,6 +81,11 @@ export interface Media extends StrapiResponseTimestamps  {
 
 export interface HelpTags extends StrapiResponseTimestamps {
     Name: string;
+}
+
+export interface HelpPage extends StrapiResponseTimestamps {
+    intro: string,
+    highlighted_help_tags: StrapiResponseBody<HelpTags>[]
 }
 
 export interface Article extends StrapiResponseTimestamps {
@@ -102,3 +111,4 @@ interface StrapiResponseTimestamps {
     updatedAt: string;
     publishedAt?: string;
 }
+

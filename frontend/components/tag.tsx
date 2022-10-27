@@ -33,7 +33,7 @@ export default function HelpTags({ helpTags }: any) {
 }
 
 
-export function HelpTag({ name }: { name: string }) {
+export function HelpTag({ name, description }: { name: string }) {
 
     if (!name) {
         return (

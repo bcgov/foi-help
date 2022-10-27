@@ -33,3 +33,37 @@
     position: absolute;
     left: 15px;
 } */
+
+
+.card {
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    max-width: 350px;
+    background-color: #fafafa;
+    position: relative;
+    transition: 0.3s;
+}
+
+.card:hover {
+    top: -10;
+    background-color: #f0f7ff
+}
+
+.card_title {
+    font-size: 1.25rem;
+    padding: 1rem 0.25rem;
+    font-weight: bold;
+}
+
+.card_body {
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(34,36,38,.1);
+    padding: 1rem 0.25rem;
+}
+
+.card_footer {
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(34,36,38,.1);
+    color: grey;
+    padding: 1rem 0.25rem;
+}
