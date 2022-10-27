@@ -19,16 +19,16 @@ export function TagCard({ name, description }: { name: string }) {
         //     <span>{name}</span>
         //     </a>
         // </Link>
-        <div className={styles.card}>
-            <div className={styles.card_title}>
-                {/* { name } */}
-                <Link href={'/help-tags/' + encodeURI(name)}>
-                    <a><span>{name}</span></a>
-                </Link>
+        <Link href={'/help-tags/' + encodeURI(name)}>
+            <div className={styles.card}>
+                <div className={styles.card_title}>
+                    { name }
+                        {/* <a><span>{name}</span></a> */}
+                </div>
+                <div className={styles.card_body}>
+                    { description || 'Missing description' }
+                </div>
             </div>
-            <div className={styles.card_body}>
-                { description || 'Missing description' }
-            </div>
-        </div>
+        </Link>
     )
 }

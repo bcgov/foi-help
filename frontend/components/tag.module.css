@@ -41,11 +41,13 @@
     max-width: 350px;
     background-color: #fafafa;
     position: relative;
-    transition: 0.3s;
+    transition: 0.3s all;
+    cursor: pointer;
+    top: 0;
 }
 
 .card:hover {
-    top: -10;
+    top: -10px;
     background-color: #f0f7ff
 }
 
