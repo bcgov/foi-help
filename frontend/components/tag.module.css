@@ -45,9 +45,23 @@
     transition: 0.3s all;
     cursor: pointer;
     top: 0;
-    flex: 1 1 10px;
+    flex: 1 1 200px;
     margin: 10px;
+    /* flex-basis: 100%; */
+    flex-basis: 200px;
+    /* flex-basis: calc(10% + 200px); */
 }
+
+
+/* 
+This is to stop a single card being on its own row, this makes it split at least two
+ */
+@media (max-width: 1201px) and (min-width: 991px ) {
+    .card {
+        flex-basis: 275px;
+    }
+}
+
 
 .card:hover {
     top: -10px;
