@@ -197,9 +197,11 @@
 
 .highlighted_tag_cards,
 .highlighted_tags {
+  margin: -10px;
   margin-bottom: 1.5rem;
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .highlighted_tags {

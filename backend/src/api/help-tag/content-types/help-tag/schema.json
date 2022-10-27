@@ -25,7 +25,7 @@
     },
     "description": {
       "type": "text",
-      "maxLength": 150
+      "maxLength": 250
     }
   }
 }

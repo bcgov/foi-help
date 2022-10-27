@@ -39,11 +39,14 @@
     border-radius: .28571429rem;
     box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
     max-width: 350px;
+    min-width: 200px;
     background-color: #fafafa;
     position: relative;
     transition: 0.3s all;
     cursor: pointer;
     top: 0;
+    flex: 1 1 10px;
+    margin: 10px;
 }
 
 .card:hover {
