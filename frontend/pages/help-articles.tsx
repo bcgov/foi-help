@@ -44,9 +44,7 @@ const Home: NextPage = ( {allArticles, moreArticles, page }: any ) => {
         { page.attributes.intro || 'Get started by searching or browsing from help articles below'} 
       </p>
 
-      {/* { JSON.stringify(page.attributes.highlighted_help_tags) } */}
-
-      {/* <p>Highlighted Tags:</p>
+{/* 
       <div className={styles.highlighted_tags}>
         { page.attributes.highlighted_help_tags.data.map(tag => {
             return <><HelpTag key={tag.id} name={tag.attributes.Name}></HelpTag></>

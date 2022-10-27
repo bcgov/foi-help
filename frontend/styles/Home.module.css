@@ -204,6 +204,13 @@
   flex-wrap: wrap;
 }
 
+@media (min-width: 1300px) {
+  .highlighted_tag_cards,
+  .highlighted_tags {
+    justify-content: space-between;
+  }
+}
+
 .highlighted_tags {
   font-size: 1.5rem;
 }
