@@ -2,6 +2,8 @@
 import Link from 'next/link'
 import styles from './tag.module.css'
 
+import { AiOutlineLink } from "react-icons/ai";
+
 export function TagCard({ name, description }: { name: string }) {
 
     if (!name) {
@@ -23,6 +25,7 @@ export function TagCard({ name, description }: { name: string }) {
             <div className={styles.card}>
                 <div className={styles.card_title}>
                     { name }
+                    <AiOutlineLink className={styles.card_icon} />
                         {/* <a><span>{name}</span></a> */}
                 </div>
                 <div className={styles.card_body}>

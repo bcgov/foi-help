@@ -56,14 +56,14 @@
 
 .card_title {
     font-size: 1.25rem;
-    padding: 1rem 0.25rem;
+    padding: 1rem 1rem;
     font-weight: bold;
 }
 
 .card_body {
     font-size: 0.9rem;
     border-top: 1px solid rgba(34,36,38,.1);
-    padding: 1rem 0.25rem;
+    padding: 1rem 1rem;
 }
 
 .card_footer {
@@ -71,4 +71,12 @@
     border-top: 1px solid rgba(34,36,38,.1);
     color: grey;
     padding: 1rem 0.25rem;
+}
+
+.card:hover .card_icon {
+    color: blue;
+}
+
+.card_icon {
+    margin-left: .5rem;
 }

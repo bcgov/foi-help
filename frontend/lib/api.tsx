@@ -85,7 +85,9 @@ export interface HelpTags extends StrapiResponseTimestamps {
 
 export interface HelpPage extends StrapiResponseTimestamps {
     intro: string,
-    highlighted_help_tags: StrapiResponseBody<HelpTags>[]
+    highlighted_help_tags?: {
+        data: StrapiResponseBody<HelpTags>[]
+    }
 }
 
 export interface Article extends StrapiResponseTimestamps {

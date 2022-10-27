@@ -136,7 +136,13 @@ export async function getStaticProps() {
     // Temporary, instead of pagination, just show 12 items.
     const moreArticles = allArticles.reverse().slice(0, 12);
 
+    // const page = await fetchHelpPage()
     const page = await fetchHelpPage()
+    const MAX_HIGHLIGHTED_TAGS_TO_SHOW = 5
+    if (page?.attributes?.highlighted_help_tags?.data) {
+      page.attributes.highlighted_help_tags.data = page.attributes.highlighted_help_tags.data.slice(0, MAX_HIGHLIGHTED_TAGS_TO_SHOW)
+    }
+    // page.attributes.highlighted_help_tags.
     console.log({ page })
     // console.log(allArticles)
     
