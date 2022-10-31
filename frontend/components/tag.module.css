@@ -56,9 +56,16 @@
 /* 
 This is to stop a single card being on its own row, this makes it split at least two
  */
-@media (max-width: 1201px) and (min-width: 991px ) {
+@media (min-width: 991px ) and (max-width: 1201px) {
     .card {
         flex-basis: 275px;
+    }
+}
+
+@media (max-width: 766px) {
+    .card {
+        flex-basis: 300px;
+        max-width: 100%;
     }
 }
 
