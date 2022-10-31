@@ -4,7 +4,7 @@ import styles from './tag.module.css'
 
 import { AiOutlineLink } from "react-icons/ai";
 
-export function TagCard({ name, description }: { name: string }) {
+export function TagCard({ name, description }: { name: string, description: string }) {
 
     if (!name) {
         return (
