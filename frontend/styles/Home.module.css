@@ -52,7 +52,7 @@
 }
 
 .description {
-  margin: 3rem 0;
+  margin: 1rem 0 1.5rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
 }
@@ -193,4 +193,24 @@
 
 .excerpt {
   color: #565656;
+}
+
+.highlighted_tag_cards,
+.highlighted_tags {
+  margin: -10px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 1300px) {
+  .highlighted_tag_cards,
+  .highlighted_tags {
+    justify-content: space-between;
+  }
+}
+
+.highlighted_tags {
+  font-size: 1.5rem;
 }

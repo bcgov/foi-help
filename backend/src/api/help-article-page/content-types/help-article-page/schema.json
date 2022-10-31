@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "help_article_pages",
+  "info": {
+    "singularName": "help-article-page",
+    "pluralName": "help-article-pages",
+    "displayName": "Help Article Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "intro": {
+      "type": "string"
+    },
+    "highlighted_help_tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::help-tag.help-tag"
+    }
+  }
+}

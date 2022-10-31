@@ -33,3 +33,71 @@
     position: absolute;
     left: 15px;
 } */
+
+
+.card {
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    max-width: 350px;
+    min-width: 200px;
+    background-color: #fafafa;
+    position: relative;
+    transition: 0.3s all;
+    cursor: pointer;
+    top: 0;
+    flex: 1 1 200px;
+    margin: 10px;
+    /* flex-basis: 100%; */
+    flex-basis: 200px;
+    /* flex-basis: calc(10% + 200px); */
+}
+
+
+/* 
+This is to stop a single card being on its own row, this makes it split at least two
+ */
+@media (min-width: 991px ) and (max-width: 1201px) {
+    .card {
+        flex-basis: 275px;
+    }
+}
+
+@media (max-width: 766px) {
+    .card {
+        flex-basis: 300px;
+        max-width: 100%;
+    }
+}
+
+
+.card:hover {
+    top: -10px;
+    background-color: #f0f7ff
+}
+
+.card_title {
+    font-size: 1.25rem;
+    padding: 1rem 1rem;
+    font-weight: bold;
+}
+
+.card_body {
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(34,36,38,.1);
+    padding: 1rem 1rem;
+}
+
+.card_footer {
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(34,36,38,.1);
+    color: grey;
+    padding: 1rem 0.25rem;
+}
+
+.card:hover .card_icon {
+    color: blue;
+}
+
+.card_icon {
+    margin-left: .5rem;
+}
