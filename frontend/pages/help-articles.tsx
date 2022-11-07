@@ -36,7 +36,7 @@ const Home: NextPage = ( {allArticles, moreArticles, page }: any ) => {
     // <div className={styles.container}>
     <Layout>
       <h1 className={styles.title}>
-        Help Articles List
+        { page.attributes.title || 'Help Articles List' } 
       </h1>
 
 
