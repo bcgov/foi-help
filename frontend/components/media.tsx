@@ -14,7 +14,7 @@ export default function HelpMedia({ mediaData }) {
     if (!mediaData || !isMimeType('video')) {
         return (
             <div className={styles.missingMedia}>
-                <code>No video for article</code>
+                <code></code>
             </div>
         )
     }
