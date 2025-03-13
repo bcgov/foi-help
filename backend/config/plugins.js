@@ -17,7 +17,7 @@ module.exports = ({ env }) => ({
             // Required for BCGov S3 due to different endpoint structure from AWS
             // Instead of using subdomains, the bucket is a path.
             s3BucketEndpoint: true,
-            // s3ForcePathStyle: true,
+            s3ForcePathStyle: true,
           },
         },
         actionOptions: {
