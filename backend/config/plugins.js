@@ -9,7 +9,7 @@ module.exports = ({ env }) => ({
           },
           region: 'us-east-1',
           params: {
-            Bucket: env('FOI_S3_BUCKETNAME'),
+            // Bucket: env('FOI_S3_BUCKETNAME'),
             // Bucket: 'strapi-help',
           },
           endpoint: `https://${env('FOI_S3_HOST')}/${env('FOI_S3_BUCKETNAME')}`,
