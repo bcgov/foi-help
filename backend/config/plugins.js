@@ -13,7 +13,7 @@ module.exports = ({ env }) => ({
               Bucket: env('FOI_S3_BUCKETNAME'),
               // Bucket: 'strapi-help',
             },
-            endpoint: `https://${env('FOI_S3_HOST')}/${env('FOI_S3_BUCKETNAME')}`,
+            baseUrl: `https://${env('FOI_S3_HOST')}/${env('FOI_S3_BUCKETNAME')}`,
             // // Required for BCGov S3 due to different endpoint structure from AWS
             // // Instead of using subdomains, the bucket is a path.
             // s3BucketEndpoint: true,
