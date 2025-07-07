@@ -18,7 +18,7 @@ export default function Header() {
           <img className="headerLogo" tabIndex={-1} alt="B.C. Government Logo" src="/images/gov3_bc_logo.png" />
         </a>
         <span className="headerTitle" role="banner">
-          <Link href='/help-articles'><a className="nolink">FOI Help 2.0</a></Link>
+          <Link href='/help-articles'><a className="nolink">FOI Help</a></Link>
         </span>
         <span
           className={`nojs-show ${

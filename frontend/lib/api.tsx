@@ -23,8 +23,6 @@
 async function fetchFromStrapi( urlSlug: string ){
     // TODO make query string an argument input
     // const res = await fetch(`http://localhost:1337/api/${urlSlug}`, {
-    console.log("TEST_API", process.env.STRAPI_API_URL)
-    console.log("TEST_READD", process.env.STRAPI_READ_TOKEN)
     const res = await fetch(`${process.env.STRAPI_API_URL}/api/${urlSlug}`, {
         headers: {
             'Content-Type': 'application/json',

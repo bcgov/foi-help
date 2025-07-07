@@ -99,9 +99,7 @@ export default function Post({ article, preview, content, hasMedia, helpTags }: 
 
 export async function getStaticProps({ params, preview = null }) {
     // const article = await fetchHelpArticleById(params.slug)
-    console.log("SLUG", params.slug)
     const article = await fetchHelpArticleBySlug(params.slug)
-    console.log("RES", article)
     const content = await markdownToHtml(article.attributes.Body)
     const hasMedia = article.attributes.Media.data
     const helpTags = article.attributes.help_tags?.data
