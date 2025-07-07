@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - "frontend/"
+      - "frontend/*"
       # - ".github/workflows/web-deploy.yaml"
   workflow_dispatch:
     inputs:
