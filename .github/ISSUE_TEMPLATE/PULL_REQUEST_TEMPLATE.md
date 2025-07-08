@@ -1,12 +1,21 @@
 ## 🎯 Summary
 
+Is this:
+
+- [ ] A content update
+- [ ] An application source code update
+
+If this a content update, please outline the files you are adding in a list below
+- 
+
+
+If this is an applcation source code update, please update the JIRA link and developer checklist below:
 <!-- COMPLETE JIRA LINK BELOW -->  
 [FOIMOD-FILL-IN-TICKET-NUMBER](https://citz-cirmo.atlassian.net/browse/FOIMOD-)
 
 <!-- PROVIDE BELOW an explanation of your changes and any supporting images -->
 
-
-## 🔰 Checklist
+## 🔰 Developer Checklist
 
 - [ ] I have read and agree with the following checklist.
 
