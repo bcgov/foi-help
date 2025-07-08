@@ -5,8 +5,7 @@ Is this:
 - [ ] A content update
 - [ ] An application source code update
 
-If this a content update, please outline the files you are adding in a list below
-- 
+If this a content update, please include a list of the files or urls you're including in this update in a list below: 
 
 
 If this is an applcation source code update, please update the JIRA link and developer checklist below:
